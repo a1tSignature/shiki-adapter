@@ -3,7 +3,7 @@
 
 * klonwar - Дмитрий Арапов
 * a1tSignature - Вадим Бойченко
-* Борис Есин
+* esiign - Борис Есин
 
 # Сервисы для работы
 * [Jira](https://shiki-adapter.atlassian.net/jira/software/projects/SHI/boards/1)
