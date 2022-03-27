@@ -1,7 +1,13 @@
 <a
-  class="uk-card-default"
-  [className]=""
-  [href]="href"
+  class="header-link"
+  [routerLinkActive]="['header-link_active', 'uk-card-default']"
+  [routerLink]="[href]"
 >
-  <img class="uk-icon uk-icon-image" [src]="iconSrc" [alt]="iconSrc">
+  <span
+    class="header-link__icon  uk-icon uk-icon-image"
+    [ngStyle]="{
+      'background-image': 'url('+ iconSrc +')'
+    }">
+
+  </span>
 </a>

@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from "../pages/components/main-page/main-page.component";
 
 const routes: Routes = [
-  { path: `**`, component: MainPageComponent }
+  { path: `home`, component: MainPageComponent },
+  { path: `**`, redirectTo: `home` },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

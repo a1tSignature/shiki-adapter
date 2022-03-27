@@ -14,6 +14,6 @@ export class HeaderLinkComponent {
     this.iconSrc = IconNameToIconSrc[prop];
   };
 
-  @Input() public active: boolean = false;
+  public active: boolean = false;
   public iconSrc!: string;
 }
