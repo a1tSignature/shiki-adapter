@@ -5,10 +5,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
-    MainPageComponent
+    MainPageComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
 })
 export class PagesModule {}
