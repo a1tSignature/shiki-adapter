@@ -38,12 +38,44 @@
         "no-console": "off",
         "no-trailing-spaces": "off",
         "no-case-declarations": "off",
-        "quotes": ["error", "backtick"],
-        "semi": ["error", "always"],
+        "quotes": [
+          "error",
+          "backtick"
+        ],
+        "semi": "off",
+        "@typescript-eslint/semi": [
+          "error",
+          "always"
+        ],
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-empty-interface": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": [
+          "error",
+          "always-multiline"
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "no-public",
+              "methods": "no-public"
+            }
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
+        "quote-props": [
+          "error",
+          "consistent-as-needed"
+        ]
       }
     },
     {

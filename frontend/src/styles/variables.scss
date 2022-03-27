@@ -1,0 +1,12 @@
+$primary: #3F51B5;
+$primary-dark: darken($primary, 20%);
+
+/* UIKit override */
+
+$global-color: #404040;
+$global-inverse-color: #F7F7F7;
+
+$global-link-color: $primary;
+$global-link-hover-color: $primary-dark;
+$global-primary-background: $primary;
+$global-secondary-background: #404040;
