@@ -11,13 +11,13 @@
         "src/types/*"
       ],
       "#models/*": [
-        "src/app/models/*"
+        "src/app/common/models/*"
       ],
       "#modules/*": [
         "src/app/modules/*"
       ],
       "#services/*": [
-        "src/app/services/*"
+        "src/app/common/services/*"
       ],
       "#icons/*": [
         "src/assets/icons/*"
