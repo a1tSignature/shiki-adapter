@@ -1,12 +1,12 @@
-<div class="uk-width-auto uk-flex uk-flex-center uk-flex-wrap">
+<div class="uk-width-auto uk-flex uk-flex-center uk-flex-wrap uk-padding-small">
   <div class="uk-width-1-5 uk-width-1-4@m uk-flex uk-flex-left"></div>
   <div class="uk-width-expand uk-flex uk-flex-center">
-    <app-header-link href="/" icon="home"></app-header-link>
-    <app-header-link href="/search" icon="search"></app-header-link>
-    <app-header-link href="/list" icon="list"></app-header-link>
+    <app-header-link *ngIf="routeAccessible('home')" href="/home" icon="home"></app-header-link>
+    <app-header-link *ngIf="routeAccessible('search')" href="/search" icon="search"></app-header-link>
+    <app-header-link *ngIf="routeAccessible('list')" href="/list" icon="list"></app-header-link>
   </div>
   <div class="uk-width-1-5 uk-width-1-4@m uk-flex uk-flex-right">
-    <app-header-link *ngIf="true" href="/login" icon="sign-in"></app-header-link>
-    <app-header-link *ngIf="false" href="/logout" icon="sign-out"></app-header-link>
+    <app-header-link *ngIf="routeAccessible('login')" href="/login" icon="sign-in"></app-header-link>
+    <app-header-link *ngIf="routeAccessible('logout')" href="/logout" icon="sign-out"></app-header-link>
   </div>
 </div>

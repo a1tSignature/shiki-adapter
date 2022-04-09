@@ -7,6 +7,18 @@
       "#src/*": [
         "src/*"
       ],
+      "#types/*": [
+        "src/types/*"
+      ],
+      "#models/*": [
+        "src/app/models/*"
+      ],
+      "#modules/*": [
+        "src/app/modules/*"
+      ],
+      "#services/*": [
+        "src/app/services/*"
+      ],
       "#icons/*": [
         "src/assets/icons/*"
       ]
