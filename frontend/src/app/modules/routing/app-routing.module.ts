@@ -5,6 +5,7 @@ import { RoutesWithData, RouteWithData } from "#modules/routing/models/route-dat
 import { RouteToRole } from "#modules/routing/models/route-to-role";
 import { UserRole } from "#models/user/role/user-role";
 import { AuthGuard } from "#src/app/guards/auth/auth.guard";
+import { NotFoundComponent } from "#modules/pages/components/not-found/not-found.component";
 
 const route = (path: string, component: Type<any>, roles: Array<UserRole>): RouteWithData => ({
   path,
@@ -17,10 +18,10 @@ const route = (path: string, component: Type<any>, roles: Array<UserRole>): Rout
 
 const routes: RoutesWithData = [
   // todo replace with pages components
-  route(`login`, MainPageComponent, RouteToRole.login),
-  route(`logout`, MainPageComponent, RouteToRole.logout),
-  route(`search`, MainPageComponent, RouteToRole.search),
-  route(`list`, MainPageComponent, RouteToRole.list),
+  route(`login`, NotFoundComponent, RouteToRole.login),
+  route(`logout`, NotFoundComponent, RouteToRole.logout),
+  route(`search`, NotFoundComponent, RouteToRole.search),
+  route(`list`, NotFoundComponent, RouteToRole.list),
 
   route(`home`, MainPageComponent, RouteToRole.home),
   { path: `**`, redirectTo: `home` },

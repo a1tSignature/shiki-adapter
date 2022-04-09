@@ -1,3 +1,22 @@
 %text-color-filter {
   filter: invert(16%) sepia(45%) saturate(0%) hue-rotate(179deg) brightness(113%) contrast(82%);
 }
+
+%custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 16px;
+    position: absolute;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+    border: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px #dadce0;
+
+    border-radius: 8px;
+    border: 4px solid transparent;
+  }
+}
