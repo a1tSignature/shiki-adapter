@@ -1,4 +1,4 @@
-import { UserRole } from "#models/user/role/user-role";
+import { UserRole } from "#src/app/common/models/user/role/user-role";
 
 export interface UserInfo {
   userRole: UserRole,

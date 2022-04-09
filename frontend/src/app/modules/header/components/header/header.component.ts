@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { AccountService } from "#src/app/services/account.service";
-import { UserRole } from '#models/user/role/user-role';
+import { AccountService } from "#src/app/common/services/account.service";
+import { UserRole } from '#src/app/common/models/user/role/user-role';
 import { Subject, takeUntil } from "rxjs";
 import { RouteToRole } from "#modules/routing/models/route-to-role";
 import { AppRoute } from "#modules/routing/models/app-route";

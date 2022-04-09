@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
-import { DefaultUserInfo, UserInfo } from "#models/user/user-info";
+import { DefaultUserInfo, UserInfo } from "#src/app/common/models/user/user-info";
 
 @Injectable({
   providedIn: `root`,

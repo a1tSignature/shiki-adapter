@@ -1,5 +1,5 @@
 import { Data, Route } from "@angular/router";
-import { UserRole } from "#models/user/role/user-role";
+import { UserRole } from "#src/app/common/models/user/role/user-role";
 
 /**
  * undefined => any role

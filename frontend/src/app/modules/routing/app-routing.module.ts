@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { MainPageComponent } from "../pages/components/main-page/main-page.component";
 import { RoutesWithData, RouteWithData } from "#modules/routing/models/route-data";
 import { RouteToRole } from "#modules/routing/models/route-to-role";
-import { UserRole } from "#models/user/role/user-role";
-import { AuthGuard } from "#src/app/guards/auth/auth.guard";
+import { UserRole } from "#src/app/common/models/user/role/user-role";
+import { AuthGuard } from "#src/app/modules/routing/guards/auth/auth.guard";
 import { NotFoundComponent } from "#modules/pages/components/not-found/not-found.component";
 
 const route = (path: string, component: Type<any>, roles: Array<UserRole>): RouteWithData => ({
