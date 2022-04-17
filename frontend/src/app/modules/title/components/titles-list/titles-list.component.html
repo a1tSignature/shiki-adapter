@@ -1,0 +1,26 @@
+<div class="titles-list uk-card uk-card-default uk-card-body">
+  <div>
+    <h3 *ngIf="label" class="titles-list__label uk-card-title">{{label}}</h3>
+  </div>
+  <div
+    class="titles-list__cards"
+    [class.titles-list__cards_vertical]="orientation === 'vertical'"
+    [class.titles-list__cards_horizontal]="orientation === 'horizontal'"
+  >
+    <ng-container *ngIf="titles; then has_titles else no_titles"></ng-container>
+  </div>
+</div>
+
+<ng-template #no_titles>
+  <progress class="uk-progress" max="10"></progress>
+</ng-template>
+
+<ng-template #has_titles>
+  <ng-container *ngFor="let title of loadedTitles$ | async">
+    <div class="titles-list__card">
+      <app-title-card
+        [title]="title"
+      ></app-title-card>
+    </div>
+  </ng-container>
+</ng-template>

@@ -1,4 +1,5 @@
 @import "src/styles/templates";
+@import "src/styles/variables";
 
 .app {
   display: flex;
@@ -14,5 +15,6 @@
     @extend %custom-scrollbar;
     height: 100%;
     width: 100%;
+    padding: $padding-small-padding $padding-padding 0;
   }
 }

@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.title {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+
+  &__image {
+    width: 100%;
+    height: 210px;
+    background-color: $placeholder;
+    background-position: center;
+    background-size: cover;
+    text-align: right;
+    padding-top: 3px;
+
+    &-badge {
+      background: rgba($primary, 0.85);
+      color: $white;
+      margin-right: 5px;
+      padding: 3px 5px;
+
+      font-weight: bold;
+      font-size: 0.8rem;
+
+      border-radius: 3px;
+      box-shadow: 0 2px 8px $primary;
+    }
+  }
+
+  &__name {
+    // todo elipsis, link color, font size
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+}

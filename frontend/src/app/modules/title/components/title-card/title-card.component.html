@@ -1,0 +1,26 @@
+<div class="title uk-link-toggle">
+  <ng-container *ngIf="(loading$ | async) === false; else loading">
+    <ng-container *ngIf="(failed$ | async) === false; else failed">
+      <ng-container *ngIf="loadedTitle$ | async as loadedTitle">
+        <div
+          class="title__image"
+          [style.background-image]="'url(' + loadedTitle.image + ')'"
+        >
+          <span class="title__image-badge" *ngIf="loadedTitle.status === 'ongoing'">Онгоинг</span>
+          <span class="title__image-badge" *ngIf="loadedTitle.status === 'anons'">Анонс</span>
+        </div>
+        <a class="title__name uk-link">
+          {{loadedTitle.name}}
+        </a>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #failed>
+  <span class="title__image">Failed</span>
+</ng-template>
+
+<ng-template #loading>
+  <span class="title__image">Loading...</span>
+</ng-template>

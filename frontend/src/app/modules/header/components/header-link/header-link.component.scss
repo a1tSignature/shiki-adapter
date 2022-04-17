@@ -1,4 +1,5 @@
 @import "src/styles/templates";
+@import "src/styles/variables";
 
 .header-link {
   display: flex;
@@ -7,7 +8,7 @@
   padding: 15px;
 
   &_active {
-
+    background: $white;
   }
 
   &__icon {
