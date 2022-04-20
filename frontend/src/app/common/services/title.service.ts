@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { TitleInfo } from "#models/title/title-info";
-import { map, Observable } from "rxjs";
-import { ShikimoriAnimesDto } from "#src/app/common/dto/shikimori/shikimori-animes.dto";
+import { Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
+import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
+import { formatTitleParams } from "#src/app/common/util/rxjs/operators/format-title-params";
 
 @Injectable({
   providedIn: `root`,
 })
 export class TitleService {
-  private readonly apiUrl = `https://shikimori.one/api/animes?limit=50&order=ranked&kind=tv`;
+  private readonly apiUrl = `${SHIKIMORI_URL}/api/animes?limit=50&order=ranked&kind=tv`;
 
   constructor(
     private httpClient: HttpClient,
@@ -23,18 +24,9 @@ export class TitleService {
    * */
   getMockTitles(): Observable<Maybe<TitleInfo[]>> {
     return this.httpClient
-      .get<ShikimoriAnimesDto>(this.apiUrl)
+      .get<TitleInfo[]>(this.apiUrl)
       .pipe(
-        map(
-          (response) => {
-            return response.map((item) => ({
-                id: item.id,
-                name: item.name,
-                image: `https://desu.shikimori.one${item.image.original}`,
-                status: item.status,
-              }),
-            );
-          }),
+        formatTitleParams(),
       );
   }
 }

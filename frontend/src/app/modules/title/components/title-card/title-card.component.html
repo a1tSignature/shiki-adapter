@@ -4,12 +4,16 @@
       <ng-container *ngIf="loadedTitle$ | async as loadedTitle">
         <div
           class="title__image"
-          [style.background-image]="'url(' + loadedTitle.image + ')'"
+          [style.background-image]="'url(' + loadedTitle.image.original + ')'"
+          [title]="loadedTitle.name"
         >
           <span class="title__image-badge" *ngIf="loadedTitle.status === 'ongoing'">Онгоинг</span>
           <span class="title__image-badge" *ngIf="loadedTitle.status === 'anons'">Анонс</span>
         </div>
-        <a class="title__name uk-link">
+        <a
+          class="title__name uk-link"
+          [title]="loadedTitle.name"
+        >
           {{loadedTitle.name}}
         </a>
       </ng-container>

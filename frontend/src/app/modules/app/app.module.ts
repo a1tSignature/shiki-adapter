@@ -7,6 +7,7 @@ import { HeaderModule } from "../header/header.module";
 import { PagesModule } from "#modules/pages/pages.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FooterModule } from "#modules/footer/footer.module";
+import { SearchModule } from "#modules/search/search.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FooterModule } from "#modules/footer/footer.module";
     HeaderModule,
     FooterModule,
     PagesModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
