@@ -12,6 +12,11 @@ import { AccountService } from "#modules/login/services/account.service";
 import { RouteData } from "#modules/routing/models/route-data";
 import { UserRole } from "#models/user/role/user-role";
 
+/**
+ * undefined => any role
+ *
+ * array => only these roles
+ * */
 export interface AuthGuardData {
   roles?: Array<UserRole>;
 }
