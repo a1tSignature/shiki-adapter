@@ -7,20 +7,29 @@
     [class.titles-list__cards_vertical]="orientation === 'vertical'"
     [class.titles-list__cards_horizontal]="orientation === 'horizontal'"
   >
-    <ng-container *ngIf="titles; then has_titles else no_titles"></ng-container>
+    <ng-container *ngIf="(loading$ | async) === false; else loading">
+      <ng-container *ngIf="(failed$ | async) === false; else failed">
+        <ng-container *ngIf="loadedTitles$ | async as loadedTitles">
+          <ng-container *ngFor="let title of loadedTitles">
+            <div class="titles-list__card">
+              <app-title-card
+                [title]="title"
+              ></app-title-card>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
 
-<ng-template #no_titles>
-  <progress class="uk-progress" max="10"></progress>
-</ng-template>
-
-<ng-template #has_titles>
-  <ng-container *ngFor="let title of loadedTitles$ | async">
+<ng-template #loading>
+  <ng-container *ngFor="let _ of [].constructor(10)">
     <div class="titles-list__card">
-      <app-title-card
-        [title]="title"
-      ></app-title-card>
+      <app-title-card-placeholder></app-title-card-placeholder>
     </div>
   </ng-container>
+</ng-template>
+
+<ng-template #failed>
 </ng-template>
