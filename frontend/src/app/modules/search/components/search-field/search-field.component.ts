@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { TitleInfo } from "#models/title/title-info";
 import { Maybe } from "#types/maybe";
-import { DefaultSearchOptions, SearchOptions, SearchService } from "#services/search.service";
+import { DefaultSearchOptions, SearchOptions, SearchService } from "#modules/search/services/search.service";
 import { BehaviorSubject, catchError, debounceTime, filter, of, Subject, switchMap } from "rxjs";
 
 @Component({

@@ -21,6 +21,9 @@
       ],
       "#icons/*": [
         "src/assets/icons/*"
+      ],
+      "#assets/*": [
+        "src/assets/*"
       ]
     },
     "outDir": "./dist/out-tsc",
@@ -41,7 +44,9 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

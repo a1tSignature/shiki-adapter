@@ -20,4 +20,5 @@ export const RouteToRole = TypescriptUtils.inferRecord({
     UserRole.GUEST,
   ],
   logout: [...authorized],
+  faq: [...any],
 });

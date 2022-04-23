@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleInfo } from "#models/title/title-info";
 import { Observable } from "rxjs";
-import { TitleService } from "#services/title.service";
+import { TitleService } from "#modules/title/services/title.service";
 import { Maybe } from "#types/maybe";
 
 @Component({

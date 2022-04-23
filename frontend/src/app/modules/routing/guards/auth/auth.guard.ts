@@ -8,7 +8,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { AccountService } from "#src/app/common/services/account.service";
+import { AccountService } from "#modules/login/services/account.service";
 import { RouteData } from "#modules/routing/models/route-data";
 
 @Injectable({
