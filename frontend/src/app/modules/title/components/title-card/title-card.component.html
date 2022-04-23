@@ -1,4 +1,7 @@
-<div class="title uk-link-toggle">
+<a
+  class="title uk-link-toggle"
+  [routerLink]="link"
+>
   <ng-container *ngIf="(loading$ | async) === false; else loading">
     <ng-container *ngIf="(failed$ | async) === false; else failed">
       <ng-container *ngIf="loadedTitle$ | async as loadedTitle">
@@ -19,7 +22,7 @@
       </ng-container>
     </ng-container>
   </ng-container>
-</div>
+</a>
 
 <ng-template #failed>
   <span class="title__image">Failed</span>

@@ -15,6 +15,8 @@ export class TitleCardComponent implements OnInit, OnDestroy {
   public readonly failed$ = new BehaviorSubject(false);
   public loadedTitle$ = new BehaviorSubject<Maybe<TitleInfo>>(null);
 
+  public link: Maybe<string> = null;
+
   private readonly destroy$ = new Subject();
 
   constructor() {}
@@ -42,6 +44,7 @@ export class TitleCardComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.link = `/anime/${title.id}`;
     this.loadedTitle$.next(title);
   };
 }

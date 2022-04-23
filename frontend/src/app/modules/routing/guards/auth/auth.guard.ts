@@ -10,6 +10,11 @@ import {
 import { map, Observable } from 'rxjs';
 import { AccountService } from "#modules/login/services/account.service";
 import { RouteData } from "#modules/routing/models/route-data";
+import { UserRole } from "#models/user/role/user-role";
+
+export interface AuthGuardData {
+  roles?: Array<UserRole>;
+}
 
 @Injectable({
   providedIn: `root`,
@@ -24,7 +29,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const availableRoles = (route.data as RouteData).roles;
+    const availableRoles = (route.data as RouteData).auth?.roles;
 
     if (!availableRoles)
       return true;

@@ -1,5 +1,6 @@
 import { Data, Route } from "@angular/router";
-import { UserRole } from "#src/app/common/models/user/role/user-role";
+import { AuthGuardData } from "#modules/routing/guards/auth/auth.guard";
+import { PrefetchGuardData } from "#modules/routing/guards/prefetch/title-prefetch-guard.service";
 
 /**
  * undefined => any role
@@ -8,7 +9,8 @@ import { UserRole } from "#src/app/common/models/user/role/user-role";
  * */
 
 export interface RouteData extends Data {
-  roles?: Array<UserRole>
+  auth?: AuthGuardData,
+  titlePrefetch?: PrefetchGuardData,
 }
 
 export interface RouteWithData extends Route {

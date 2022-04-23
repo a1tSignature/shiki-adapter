@@ -21,4 +21,6 @@ export const RouteToRole = TypescriptUtils.inferRecord({
   ],
   logout: [...authorized],
   faq: [...any],
+  anime: [...any],
+  notFound: [...any],
 });
