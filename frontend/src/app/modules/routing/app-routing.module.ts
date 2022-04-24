@@ -11,6 +11,7 @@ import { LoginPageComponent } from "#modules/pages/components/login-page/login-p
 import { LogoutPageComponent } from "#modules/pages/components/logout-page/logout-page.component";
 import { TitlePrefetchGuard } from "#modules/routing/guards/prefetch/title-prefetch-guard.service";
 import { TitlePageComponent } from "#modules/pages/components/title-page/title-page.component";
+import { FaqPageComponent } from "#modules/pages/components/faq-page/faq-page.component";
 
 const route = (path: string, component: Type<any>, roles: Array<UserRole>, children?: RouteWithData[]): RouteWithData => ({
   path,
@@ -26,7 +27,6 @@ const route = (path: string, component: Type<any>, roles: Array<UserRole>, child
 
 const routes: RoutesWithData = [
   // todo replace with pages components
-  route(`faq`, NotFoundComponent, RouteToRole.faq),
   route(`list`, NotFoundComponent, RouteToRole.list),
 
   {
@@ -40,6 +40,7 @@ const routes: RoutesWithData = [
     },
   },
 
+  route(`faq`, FaqPageComponent, RouteToRole.faq),
   route(`login`, LoginPageComponent, RouteToRole.login),
   route(`logout`, LogoutPageComponent, RouteToRole.logout),
   route(`search`, SearchPageComponent, RouteToRole.search),
