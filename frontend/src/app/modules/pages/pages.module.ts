@@ -10,6 +10,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { LogoutPageComponent } from './components/logout-page/logout-page.component';
 import { TitlePageComponent } from './components/title-page/title-page.component';
 import { PlayerModule } from "#modules/player/player.module";
+import { FaqPageComponent } from './components/faq-page/faq-page.component';
+import { RouterModule } from "@angular/router";
 
 
 @NgModule({
@@ -20,9 +22,11 @@ import { PlayerModule } from "#modules/player/player.module";
     LoginPageComponent,
     LogoutPageComponent,
     TitlePageComponent,
+    FaqPageComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule,
     TitleModule,
     FooterModule,
     SearchModule,
