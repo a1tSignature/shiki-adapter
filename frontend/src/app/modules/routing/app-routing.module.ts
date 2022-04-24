@@ -10,6 +10,7 @@ import { SearchPageComponent } from "#modules/pages/components/search-page/searc
 import { LoginPageComponent } from "#modules/pages/components/login-page/login-page.component";
 import { LogoutPageComponent } from "#modules/pages/components/logout-page/logout-page.component";
 import { TitlePrefetchGuard } from "#modules/routing/guards/prefetch/title-prefetch-guard.service";
+import { TitlePageComponent } from "#modules/pages/components/title-page/title-page.component";
 
 const route = (path: string, component: Type<any>, roles: Array<UserRole>, children?: RouteWithData[]): RouteWithData => ({
   path,
@@ -30,7 +31,7 @@ const routes: RoutesWithData = [
 
   {
     path: `anime/:id`,
-    component: NotFoundComponent,
+    component: TitlePageComponent,
     canActivate: [AuthGuard, TitlePrefetchGuard],
     data: {
       auth: {

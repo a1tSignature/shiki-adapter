@@ -8,6 +8,8 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { SearchModule } from "#modules/search/search.module";
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LogoutPageComponent } from './components/logout-page/logout-page.component';
+import { TitlePageComponent } from './components/title-page/title-page.component';
+import { PlayerModule } from "#modules/player/player.module";
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { LogoutPageComponent } from './components/logout-page/logout-page.compon
     SearchPageComponent,
     LoginPageComponent,
     LogoutPageComponent,
+    TitlePageComponent,
   ],
   imports: [
     CommonModule,
     TitleModule,
     FooterModule,
     SearchModule,
+    PlayerModule,
   ],
 })
 export class PagesModule {}
