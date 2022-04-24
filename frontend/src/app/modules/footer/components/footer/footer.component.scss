@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.footer {
+  padding: $padding-padding 0;
+  width: 100%;
+  text-align: center;
+
+  &__link-container {
+    display: inline;
+
+    &:not(:last-child):after {
+      content: " | ";
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "src/styles/templates";
+@import "src/styles/variables";
+
+.header-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  &_active {
+    background: $white;
+  }
+
+  &__icon {
+    @extend %text-color-filter;
+  }
+}

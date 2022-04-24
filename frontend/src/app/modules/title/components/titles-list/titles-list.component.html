@@ -1,0 +1,35 @@
+<div class="titles-list uk-card uk-card-default uk-card-body">
+  <div>
+    <h3 *ngIf="label" class="titles-list__label uk-card-title">{{label}}</h3>
+  </div>
+  <div
+    class="titles-list__cards"
+    [class.titles-list__cards_vertical]="orientation === 'vertical'"
+    [class.titles-list__cards_horizontal]="orientation === 'horizontal'"
+  >
+    <ng-container *ngIf="(loading$ | async) === false; else loading">
+      <ng-container *ngIf="(failed$ | async) === false; else failed">
+        <ng-container *ngIf="loadedTitles$ | async as loadedTitles">
+          <ng-container *ngFor="let title of loadedTitles">
+            <div class="titles-list__card">
+              <app-title-card
+                [title]="title"
+              ></app-title-card>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loading>
+  <ng-container *ngFor="let _ of [].constructor(10)">
+    <div class="titles-list__card">
+      <app-title-card-placeholder></app-title-card-placeholder>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #failed>
+</ng-template>

@@ -1,0 +1,13 @@
+@import "src/styles/variables";
+
+.title-page {
+  &__block {
+    padding: 0 $padding-small-padding $padding-padding;
+
+    &_left {
+    }
+
+    &_right {
+    }
+  }
+}

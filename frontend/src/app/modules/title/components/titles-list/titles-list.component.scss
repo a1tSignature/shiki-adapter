@@ -1,0 +1,48 @@
+@import "src/styles/templates";
+@import "src/styles/variables";
+
+.titles-list {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__card {
+    margin-bottom: $margin-margin;
+    margin-right: $margin-margin;
+  }
+
+  &__cards {
+    @extend %custom-scrollbar;
+    display: flex;
+
+    flex-direction: row;
+
+    &_horizontal {
+      width: 100%;
+      margin-bottom: -$margin-margin;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    &_vertical {
+      height: 100%;
+      margin-right: -$margin-margin;
+
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      flex-wrap: wrap;
+      align-items: start;
+      justify-content: space-between;
+    }
+  }
+}

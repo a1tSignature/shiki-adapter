@@ -1,0 +1,26 @@
+<!-- todo separate components for every list -->
+
+<div class="titles-list-container">
+  <app-titles-list
+    [titles]="titles"
+    label="Горизонтальный"
+  ></app-titles-list>
+</div>
+
+<div class="titles-list-container" [style.height]="'500px'">
+  <app-titles-list
+    [titles]="titles"
+    label="Вертикальный со скроллом"
+    orientation="vertical"
+  ></app-titles-list>
+</div>
+
+<div class="titles-list-container">
+  <app-titles-list
+    [titles]="titles"
+    label="Вертикальный"
+    orientation="vertical"
+  ></app-titles-list>
+</div>
+
+<app-footer></app-footer>
