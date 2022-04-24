@@ -15,8 +15,6 @@ export class TitleService {
   constructor(
     private httpClient: HttpClient,
   ) {}
-
-  // todo discuss with Vadim and remove
   /**
    * Loading - nothing,
    * Error - null,
