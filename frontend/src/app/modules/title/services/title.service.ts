@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
 import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
+import { SearchService } from "#modules/search/services/search.service";
 
 @Injectable({
   providedIn: `root`,
@@ -14,7 +15,9 @@ export class TitleService {
 
   constructor(
     private httpClient: HttpClient,
+    private searchService: SearchService,
   ) {}
+
   /**
    * Loading - nothing,
    * Error - null,
@@ -26,5 +29,14 @@ export class TitleService {
       .pipe(
         formatTitleListParams(),
       );
+  }
+
+  ongoings(): Observable<Maybe<TitleInfo[]>> {
+    return this.searchService.search({
+      order: `popularity`,
+      kind: `tv`,
+      status: `ongoing`,
+      limit: 20,
+    });
   }
 }

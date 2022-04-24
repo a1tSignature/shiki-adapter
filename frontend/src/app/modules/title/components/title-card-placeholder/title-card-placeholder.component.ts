@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: `app-title-card-placeholder`,
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: [`../title-card/title-card.component.scss`],
 })
 export class TitleCardPlaceholderComponent {
+  @Input() public invisible = false;
 
   constructor() { }
 

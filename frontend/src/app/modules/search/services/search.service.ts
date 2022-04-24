@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, take } from "rxjs";
+import { Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { TitleInfo } from "#models/title/title-info";
 import { HttpClient } from "@angular/common/http";
@@ -15,7 +15,7 @@ export type SearchParam<T extends string> = T | `!${T}`;
 export type SearchOption<T extends string> = SearchParam<T> | Array<SearchParam<T>>;
 
 export interface SearchOptions {
-  search: string;
+  search?: string;
   page?: number;
   limit?: number;
   order?: SearchOption<SearchOrder>;
@@ -30,7 +30,6 @@ export const AgedContentRating: SearchOption<SearchRating> = [];
 
 
 export const DefaultSearchOptions: SearchOptions = {
-  search: ``,
   page: 1,
   limit: 50,
   rating: NoAgedContentRating,
@@ -51,9 +50,6 @@ export class SearchService {
       ...DefaultSearchOptions,
       ...options,
     };
-
-    if (!options.search)
-      return of([]).pipe(take(1));
 
     const url = this.buildUrl(options);
     return this.httpClient.get<TitleInfo[]>(url.toString()).pipe(

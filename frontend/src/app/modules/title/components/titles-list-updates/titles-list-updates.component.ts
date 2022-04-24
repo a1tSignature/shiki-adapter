@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { of } from "rxjs";
 
 @Component({
   selector: `app-titles-list-updates`,
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: [`./titles-list-updates.component.scss`],
 })
 export class TitlesListUpdatesComponent {
+  public titles = of([]);
 
   constructor() { }
 

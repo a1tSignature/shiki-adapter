@@ -44,7 +44,8 @@ export class TitlesListComponent implements OnInit, OnDestroy {
   }
 
   private onTitlesLoaded = (titles: Maybe<TitleInfo[]>): void => {
-    this.loading$.next(false);
+    this.reset();
+
     if (titles === null) {
       this.failed$.next(true);
       return;
@@ -52,4 +53,9 @@ export class TitlesListComponent implements OnInit, OnDestroy {
 
     this.loadedTitles$.next(titles);
   };
+
+  private reset(): void {
+    this.failed$.next(false);
+    this.loading$.next(false);
+  }
 }
