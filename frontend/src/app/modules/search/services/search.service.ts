@@ -24,11 +24,16 @@ export interface SearchOptions {
   rating?: SearchOption<SearchRating>;
 }
 
+export const NoAgedContentRating: SearchOption<SearchRating> = [`!rx`, `!r_plus`];
+
+export const AgedContentRating: SearchOption<SearchRating> = [];
+
+
 export const DefaultSearchOptions: SearchOptions = {
   search: ``,
   page: 1,
   limit: 50,
-  rating: [`!rx`, `!r_plus`],
+  rating: NoAgedContentRating,
 };
 
 @Injectable({

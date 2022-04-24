@@ -7,4 +7,8 @@
       (keyup)="onKeyup($any($event.currentTarget).value)"
     >
   </div>
+  <div class="uk-inline uk-width-1-1 uk-margin-small-top">
+    <label><input class="uk-checkbox" type="checkbox" checked="checked"
+                  (change)="onCheckbox($any($event.currentTarget).checked)"> Без 18+ контента</label>
+  </div>
 </div>
