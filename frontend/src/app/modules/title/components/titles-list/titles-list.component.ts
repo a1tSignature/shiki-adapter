@@ -29,7 +29,6 @@ export class TitlesListComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject();
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -45,6 +44,7 @@ export class TitlesListComponent implements OnInit, OnDestroy {
   }
 
   private onTitlesLoaded = (titles: Maybe<TitleInfo[]>): void => {
+    this.loading$.next(false);
     if (titles === null) {
       this.failed$.next(true);
       return;

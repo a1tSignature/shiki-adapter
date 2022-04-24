@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from "rxjs";
+import { Observable, of, take } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { TitleInfo } from "#models/title/title-info";
 import { HttpClient } from "@angular/common/http";
@@ -53,7 +53,7 @@ export class SearchService {
     };
 
     if (!options.search)
-      return of([]);
+      return of([]).pipe(take(1));
 
     const url = this.buildUrl(options);
     return this.httpClient.get<TitleInfo[]>(url.toString()).pipe(
