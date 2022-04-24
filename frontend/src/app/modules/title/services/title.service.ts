@@ -4,7 +4,7 @@ import { TitleInfo } from "#models/title/title-info";
 import { Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
-import { formatTitleParams } from "#src/app/common/util/rxjs/operators/format-title-params";
+import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
 
 @Injectable({
   providedIn: `root`,
@@ -24,7 +24,7 @@ export class TitleService {
     return this.httpClient
       .get<TitleInfo[]>(this.apiUrl)
       .pipe(
-        formatTitleParams(),
+        formatTitleListParams(),
       );
   }
 }

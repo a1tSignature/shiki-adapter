@@ -1,6 +1,6 @@
 import { Data, Route } from "@angular/router";
-import { AuthGuardData } from "#modules/routing/guards/auth/auth.guard";
-import { PrefetchGuardData } from "#modules/routing/guards/prefetch/title-prefetch-guard.service";
+import { AuthGuardData } from "#modules/routing/guards/auth.guard";
+import { PrefetchGuardData } from "#modules/routing/guards/title-prefetch.guard";
 
 export interface RouteData extends Data {
   auth?: AuthGuardData,

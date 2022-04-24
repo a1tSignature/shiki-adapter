@@ -4,12 +4,12 @@ import { MainPageComponent } from "../pages/components/main-page/main-page.compo
 import { RoutesWithData, RouteWithData } from "#modules/routing/models/route-data";
 import { RouteToRole } from "#modules/routing/models/route-to-role";
 import { UserRole } from "#src/app/common/models/user/role/user-role";
-import { AuthGuard } from "#src/app/modules/routing/guards/auth/auth.guard";
+import { AuthGuard } from "#modules/routing/guards/auth.guard";
 import { NotFoundComponent } from "#modules/pages/components/not-found/not-found.component";
 import { SearchPageComponent } from "#modules/pages/components/search-page/search-page.component";
 import { LoginPageComponent } from "#modules/pages/components/login-page/login-page.component";
 import { LogoutPageComponent } from "#modules/pages/components/logout-page/logout-page.component";
-import { TitlePrefetchGuard } from "#modules/routing/guards/prefetch/title-prefetch-guard.service";
+import { TitlePrefetchGuard } from "#modules/routing/guards/title-prefetch.guard";
 import { TitlePageComponent } from "#modules/pages/components/title-page/title-page.component";
 import { FaqPageComponent } from "#modules/pages/components/faq-page/faq-page.component";
 

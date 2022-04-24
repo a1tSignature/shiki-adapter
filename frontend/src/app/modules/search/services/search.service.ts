@@ -4,7 +4,7 @@ import { Maybe } from "#types/maybe";
 import { TitleInfo } from "#models/title/title-info";
 import { HttpClient } from "@angular/common/http";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
-import { formatTitleParams } from "#src/app/common/util/rxjs/operators/format-title-params";
+import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
 
 export type SearchOrder = `id` | `ranked` | `kind` | `popularity` | `name` | `aired_on` | `episodes` | `status`;
 
@@ -24,7 +24,7 @@ export interface SearchOptions {
   rating?: SearchOption<SearchRating>;
 }
 
-export const NoAgedContentRating: SearchOption<SearchRating> = [`!rx`, `!r_plus`];
+export const NoAgedContentRating: SearchOption<SearchRating> = [`!rx`];
 
 export const AgedContentRating: SearchOption<SearchRating> = [];
 
@@ -57,7 +57,7 @@ export class SearchService {
 
     const url = this.buildUrl(options);
     return this.httpClient.get<TitleInfo[]>(url.toString()).pipe(
-      formatTitleParams(),
+      formatTitleListParams(),
     );
   }
 
