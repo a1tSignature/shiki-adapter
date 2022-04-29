@@ -6,11 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -30,6 +34,10 @@ public class TitleEntity {
 
     @Column(name = "originalImageLink")
     private String originalImageLink;
+
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb", name = "content")
+    private Map<String, List<String>> content = new HashMap<>();
 
     @Column(name = "kind")
     private TitleType kind;

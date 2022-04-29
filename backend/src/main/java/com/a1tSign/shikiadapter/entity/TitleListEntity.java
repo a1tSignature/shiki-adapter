@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -42,7 +43,7 @@ public class TitleListEntity {
             joinColumns = @JoinColumn(name = "title_list_id"),
             inverseJoinColumns = @JoinColumn(name = "title_id")
     )
-    private List<TitleEntity> titles;
+    private Set<TitleEntity> titles;
 
 
 }

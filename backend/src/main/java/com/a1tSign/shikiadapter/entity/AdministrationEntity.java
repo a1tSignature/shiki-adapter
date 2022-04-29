@@ -30,4 +30,6 @@ public class AdministrationEntity {
     @Column(name = "role")
     private Role role;
 
+    private Boolean disabled;
+
 }
