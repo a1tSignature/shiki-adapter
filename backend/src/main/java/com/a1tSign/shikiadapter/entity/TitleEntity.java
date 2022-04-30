@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
@@ -22,7 +23,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "titles")
+@Accessors(chain = true)
+@Table(name = "title")
 public class TitleEntity {
 
     @Id

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.a1tSign.shikiadapter.util.Mapper.fromTitleEntity;
+import static com.a1tSign.shikiadapter.util.Mapper.toTitleEntity;
 
 @Service
 @RequiredArgsConstructor
@@ -21,10 +22,20 @@ public class TitleServiceImpl implements TitleService{
     private final TitleRepository titleRepository;
 
 
+    //TODO:: add dynamic loading of title-content
     @Override
     public TitleTo findByName(String name) {
-        return fromTitleEntity(titleRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("Title not found")));
+        var entity = titleRepository.findByName(name);
+
+        if (entity.isPresent()) {
+            return fromTitleEntity(entity.get());
+        } else {
+            // loading...
+            return new TitleTo()
+                    .setName("Mock")
+                    .setStatus("mocked")
+                    .setKind("mocked");
+        }
     }
 
     @Override
@@ -37,10 +48,15 @@ public class TitleServiceImpl implements TitleService{
     //TODO: need to use custom adapter for receiving video-content, mocked
     @Override
     public TitleTo updateTitle(TitleTo titleTo) {
-        var title = titleRepository.findByName(titleTo.getName())
-                .orElseThrow(() -> new RuntimeException("Title not found"));
 
-        title.setContent(titleTo.getContent());
+        var title = titleRepository.findByName(titleTo.getName());
+
+        if (title.isPresent()) {
+            title.get().setContent(titleTo.getContent());
+        } else {
+            var titleEntity = toTitleEntity(titleTo);
+            titleRepository.save(titleEntity);
+        }
 
         return titleTo;
     }

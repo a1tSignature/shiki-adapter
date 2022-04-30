@@ -10,9 +10,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-    liquibase:
-      change-log: classpath:/db/migration/changelog.xml
-      url: ${spring.datasource.url}
+  liquibase:
+    change-log: classpath:/db/migration/changelog-master.xml
+    url: ${spring.datasource.url}
+    user: postgres
+    password: postgres
 
 server:
   port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html

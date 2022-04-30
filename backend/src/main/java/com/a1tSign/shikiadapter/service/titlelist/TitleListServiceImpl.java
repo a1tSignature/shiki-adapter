@@ -2,14 +2,19 @@ package com.a1tSign.shikiadapter.service.titlelist;
 
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleListTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
+import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
+import com.a1tSign.shikiadapter.contracts.enums.TitleType;
+import com.a1tSign.shikiadapter.entity.TitleEntity;
+import com.a1tSign.shikiadapter.entity.TitleListEntity;
+import com.a1tSign.shikiadapter.exception.ShikiAdapterException;
 import com.a1tSign.shikiadapter.repository.TitleListRepository;
 import com.a1tSign.shikiadapter.repository.TitleRepository;
 import com.a1tSign.shikiadapter.util.Mapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,10 +24,20 @@ public class TitleListServiceImpl implements TitleListService {
     private final TitleListRepository titleListRepository;
     private final TitleRepository titleRepository;
 
+    private static Set<TitleEntity> set;
+
+    static {
+        set = new HashSet<>();
+        set.add(new TitleEntity(UUID.randomUUID(), "mock", "mock", new HashMap<>(),
+                TitleType.SPECIAL, TitleStatus.ANONS));
+    }
+
     @Override
+    @SneakyThrows
     public TitleListTo findParticularTitleListOfUser(String username, String name) {
         var list = titleListRepository.findByUsernameAndName(username, name)
-                .orElseThrow(() -> new RuntimeException("Could not find the list of this name"));
+                .orElse(new TitleListEntity(UUID.randomUUID(), "mock-name", username, set));
+//                .orElseThrow(() -> new ShikiAdapterException("Could not find the list of this name", "LIST_NOT_FOUND"));
 
         return Mapper.fromTitleListEntity(list);
     }
@@ -35,14 +50,20 @@ public class TitleListServiceImpl implements TitleListService {
     }
 
     @Override
+    @SneakyThrows
     public Boolean addTitle(TitleTo title, String username, String titleListName) {
         var list = titleListRepository.findByUsernameAndName(username, titleListName)
-                .orElseThrow(() -> new RuntimeException("Could not find the list of this name"));
+                .orElse(new TitleListEntity(UUID.randomUUID(), "mock-name", username,
+                        set));
+//                .orElseThrow(() -> new RuntimeException("Could not find the list of this name"));
 
         var titleEntity = titleRepository.findByName(title.getName())
-                .orElseThrow(() -> new RuntimeException("Title not found"));
+                .orElse(new TitleEntity(UUID.randomUUID(), "mock", "mock", new HashMap<>(),
+                        TitleType.SPECIAL, TitleStatus.ANONS));
+//                .orElseThrow(() -> new RuntimeException("Title not found"));
 
         list.getTitles().add(titleEntity);
+//        titleListRepository.save(list);
 
         return true;
     }

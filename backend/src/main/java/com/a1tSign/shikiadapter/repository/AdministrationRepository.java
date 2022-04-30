@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface AdministrationRepository extends JpaRepository<AdministrationEntity, UUID> {
 
-    @Query(value = "FROM AdministrationEntity WHERE disabled = false")
-    List<AdministrationEntity> findAllByDisabled();
+    @Query(value = "FROM AdministrationEntity WHERE role = 'MODERATOR'")
+    List<AdministrationEntity> findAllModerators();
 }

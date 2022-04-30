@@ -31,6 +31,4 @@ public interface TitleService {
      * @return updated title-to model.
      */
     TitleTo updateTitle(TitleTo titleTo);
-
-
 }

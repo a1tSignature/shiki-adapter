@@ -10,7 +10,7 @@ create table title (
 create table title_lists (
     title_list_id uuid not null primary key,
     name varchar,
-    username varchar,
+    username varchar
 );
 
 create table list_titles (
