@@ -2,9 +2,9 @@ spring:
   application:
     name: shiki-adapter
   datasource:
-    url: jdbc:postgresql://localhost:5432/shiki-adapter
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/de9vajg04p5t04
+    username: tzditeanalkdhs
+    password: 034defafcab5c0b042a9738768a230766dd97335bfc651c9bbc9ea643c69a0e4
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -13,8 +13,8 @@ spring:
   liquibase:
     change-log: classpath:/db/migration/changelog-master.xml
     url: ${spring.datasource.url}
-    user: postgres
-    password: postgres
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
 
 server:
   port: 8080
