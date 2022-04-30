@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: production
   application:
     name: shiki-adapter
   datasource:
@@ -22,3 +24,22 @@ server:
 springdoc:
   swagger-ui:
     path: /swagger-ui-custom.html
+
+---
+spring:
+  profiles: development
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/report-service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    liquibase:
+      change-log: classpath:/db/migration/changelog-master.xml
+      url: ${spring.datasource.url}
+      user: ${spring.datasource.username}
+      password: ${spring.datasource.password}
