@@ -11,3 +11,4 @@
 
 # Документация
 * [Technichal Task](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Technical_task.pdf)
+* [api-documentation](https://shiki-adapter-api.herokuapp.com/swagger-ui/index.html)
