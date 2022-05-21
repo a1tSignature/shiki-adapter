@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { TitleInfo } from "#models/title/title-info";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
 import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
@@ -38,5 +38,10 @@ export class TitleService {
       status: `ongoing`,
       limit: 20,
     });
+  }
+
+  updates(): Observable<Maybe<TitleInfo[]>> {
+    // todo return real updates
+    return of(null);
   }
 }

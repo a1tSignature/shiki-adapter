@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleInfo } from "#models/title/title-info";
 import { TitleService } from "#modules/title/services/title.service";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { Maybe } from "#types/maybe";
 
 @Component({
@@ -11,7 +11,7 @@ import { Maybe } from "#types/maybe";
 })
 export class TitlesListOngoingsComponent implements OnInit {
   public readonly titles$: Observable<Maybe<TitleInfo[]>>;
-  private readonly titles = new BehaviorSubject<Maybe<TitleInfo[]>>(null);
+  private readonly titles = new Subject<Maybe<TitleInfo[]>>();
 
   constructor(
     private titleService: TitleService,
@@ -22,7 +22,6 @@ export class TitlesListOngoingsComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.ongoings()
       .subscribe((ongoings) => {
-        console.log(`here`, ongoings);
         this.titles.next(ongoings);
       });
   }
