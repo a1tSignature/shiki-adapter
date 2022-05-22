@@ -1,1 +1,8 @@
-<p>list-page works!</p>
+<div class="list-page">
+  <div class="list-page__current-list  uk-width-2-3 uk-width-3-4@l">
+    <app-titles-list [titles]="selectListService.selectedList$" orientation="vertical"></app-titles-list>
+  </div>
+  <div class="list-page__select-list  uk-width-1-3 uk-width-1-4@l uk-margin-left">
+    <app-select-list></app-select-list>
+  </div>
+</div>

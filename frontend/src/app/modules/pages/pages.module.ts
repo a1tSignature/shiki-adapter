@@ -14,6 +14,7 @@ import { FaqPageComponent } from './components/faq-page/faq-page.component';
 import { RouterModule } from "@angular/router";
 import { ShkeyPageComponent } from './components/shkey-page/shkey-page.component';
 import { ListPageComponent } from './components/list-page/list-page.component';
+import { ListModule } from "#modules/list/list.module";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ListPageComponent } from './components/list-page/list-page.component';
     FooterModule,
     SearchModule,
     PlayerModule,
+    ListModule,
   ],
 })
 export class PagesModule {}

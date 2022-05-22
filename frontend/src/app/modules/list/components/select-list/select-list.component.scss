@@ -1,0 +1,10 @@
+@import "src/styles/variables";
+
+.select-list {
+  height: 100%;
+
+  &__option {
+    width: 100%;
+    margin-bottom: $margin-margin;
+  }
+}

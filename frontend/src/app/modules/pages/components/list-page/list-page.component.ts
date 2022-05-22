@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectListService } from "#modules/list/services/select-list.service";
 
 @Component({
   selector: `app-list-page`,
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ListPageComponent {
 
-  constructor() { }
+  constructor(
+    public selectListService: SelectListService,
+  ) {
+  }
 
 }
