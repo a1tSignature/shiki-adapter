@@ -1,0 +1,13 @@
+<div class="select-list  uk-card uk-card-default uk-card-body">
+  <ng-container *ngFor="let item of ListType | keyvalue">
+    <div
+      *ngIf="(selectListService.selectedType$ | async) as sel"
+      class="select-list__option  uk-button uk-button-default"
+      [class.uk-button-default]="sel !== item.value"
+      [class.uk-button-primary]="sel === item.value"
+      (click)="selectListService.selectList(item.value)"
+    >
+      <span>{{item.value}}</span>
+    </div>
+  </ng-container>
+</div>
