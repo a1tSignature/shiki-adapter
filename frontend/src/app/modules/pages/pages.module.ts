@@ -12,6 +12,8 @@ import { TitlePageComponent } from './components/title-page/title-page.component
 import { PlayerModule } from "#modules/player/player.module";
 import { FaqPageComponent } from './components/faq-page/faq-page.component';
 import { RouterModule } from "@angular/router";
+import { ShkeyPageComponent } from './components/shkey-page/shkey-page.component';
+import { ListPageComponent } from './components/list-page/list-page.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { RouterModule } from "@angular/router";
     LogoutPageComponent,
     TitlePageComponent,
     FaqPageComponent,
+    ShkeyPageComponent,
+    ListPageComponent,
   ],
   imports: [
     CommonModule,

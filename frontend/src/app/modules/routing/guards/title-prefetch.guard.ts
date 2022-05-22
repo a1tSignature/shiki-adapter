@@ -3,6 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
+import { TitleInfo } from "#models/title/title-info";
+import { RecentTitlesService } from "#modules/title/services/recent-titles.service";
+import { formatTitleParams } from "#src/app/common/util/rxjs/operators/format-title-params";
 
 export interface PrefetchGuardData {
   url: string
@@ -15,6 +18,7 @@ export class TitlePrefetchGuard implements CanActivate {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
+    private recentTitlesService: RecentTitlesService,
   ) {}
 
 
@@ -26,8 +30,10 @@ export class TitlePrefetchGuard implements CanActivate {
     if (!url)
       return true;
 
-    return this.httpClient.head<never>(url).pipe(
-      map(() => {
+    return this.httpClient.get<TitleInfo>(url).pipe(
+      formatTitleParams(),
+      map((title) => {
+        this.recentTitlesService.push(title);
         return true;
       }),
       catchError(() => {

@@ -10,4 +10,10 @@ export interface TitleInfo {
   };
   kind: TitleType;
   status: TitleStatus;
+
+  episode?: TitleInfoEpisode;
+}
+
+export interface TitleInfoEpisode {
+
 }

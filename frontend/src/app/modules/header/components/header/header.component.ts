@@ -4,6 +4,7 @@ import { UserRole } from '#src/app/common/models/user/role/user-role';
 import { Subject, takeUntil } from "rxjs";
 import { RouteToRole } from "#modules/routing/models/route-to-role";
 import { AppRoute } from "#modules/routing/models/app-route";
+import { LoginService } from "#modules/login/services/login.service";
 
 @Component({
   selector: `app-header`,
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnDestroy {
 
   constructor(
     public accountService: AccountService,
+    public loginService: LoginService,
   ) {
     accountService.userInfo$.pipe(
       takeUntil(this.destroy$),

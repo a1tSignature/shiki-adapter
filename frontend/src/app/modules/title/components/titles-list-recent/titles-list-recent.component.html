@@ -1,0 +1,6 @@
+<ng-container *ngIf="recentTitlesService.recentTitles$ | async">
+  <app-titles-list
+    [titles]="recentTitlesService.recentTitles$"
+    label="Недавние"
+  ></app-titles-list>
+</ng-container>

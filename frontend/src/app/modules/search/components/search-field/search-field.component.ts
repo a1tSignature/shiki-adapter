@@ -29,6 +29,7 @@ export class SearchFieldComponent implements OnDestroy {
       .pipe(
         debounceTime(this.debounceTime),
         filter(Boolean),
+        filter((query) => !!query.search),
         switchMap((query) => this.searchService.search(query)),
         catchError(() => of(null)),
       )
