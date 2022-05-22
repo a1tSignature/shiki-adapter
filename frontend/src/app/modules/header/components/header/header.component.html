@@ -6,7 +6,9 @@
     <app-header-link *ngIf="routeAccessible('list')" href="/list" icon="list"></app-header-link>
   </div>
   <div class="uk-width-1-5 uk-width-1-4@m uk-flex uk-flex-right">
-    <app-header-link *ngIf="routeAccessible('login')" href="/login" icon="sign-in"></app-header-link>
+    <div (click)="loginService.receiveAuthorizationToken();$event.preventDefault()">
+      <app-header-link *ngIf="routeAccessible('login')" icon="sign-in"></app-header-link>
+    </div>
     <app-header-link *ngIf="routeAccessible('logout')" href="/logout" icon="sign-out"></app-header-link>
   </div>
 </div>

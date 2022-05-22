@@ -8,6 +8,8 @@ import { PagesModule } from "#modules/pages/pages.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FooterModule } from "#modules/footer/footer.module";
 import { SearchModule } from "#modules/search/search.module";
+import { OAuthModule } from "angular-oauth2-oidc";
+import { ListModule } from "#modules/list/list.module";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SearchModule } from "#modules/search/search.module";
     FooterModule,
     PagesModule,
     SearchModule,
+    ListModule,
+    OAuthModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

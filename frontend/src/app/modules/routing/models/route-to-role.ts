@@ -13,6 +13,7 @@ const any = [
 ];
 
 export const RouteToRole = TypescriptUtils.inferRecord({
+  shkey: [...any],
   home: [...any],
   search: [...any],
   list: [...authorized],

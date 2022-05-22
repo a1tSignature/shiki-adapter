@@ -12,6 +12,8 @@ import { LogoutPageComponent } from "#modules/pages/components/logout-page/logou
 import { TitlePrefetchGuard } from "#modules/routing/guards/title-prefetch.guard";
 import { TitlePageComponent } from "#modules/pages/components/title-page/title-page.component";
 import { FaqPageComponent } from "#modules/pages/components/faq-page/faq-page.component";
+import { ShkeyPageComponent } from '../pages/components/shkey-page/shkey-page.component';
+import { ListPageComponent } from "#modules/pages/components/list-page/list-page.component";
 
 const route = (path: string, component: Type<any>, roles: Array<UserRole>, children?: RouteWithData[]): RouteWithData => ({
   path,
@@ -26,9 +28,8 @@ const route = (path: string, component: Type<any>, roles: Array<UserRole>, child
 });
 
 const routes: RoutesWithData = [
-  // todo replace with pages components
-  route(`list`, NotFoundComponent, RouteToRole.list),
-
+  route(`list`, ListPageComponent, RouteToRole.list),
+  route(`admin/login`, NotFoundComponent, RouteToRole.login),
   {
     path: `anime/:id`,
     component: TitlePageComponent,
@@ -41,6 +42,7 @@ const routes: RoutesWithData = [
   },
 
   route(`faq`, FaqPageComponent, RouteToRole.faq),
+  route(`shkey`, ShkeyPageComponent, RouteToRole.shkey),
   route(`login`, LoginPageComponent, RouteToRole.login),
   route(`logout`, LogoutPageComponent, RouteToRole.logout),
   route(`search`, SearchPageComponent, RouteToRole.search),
@@ -49,7 +51,7 @@ const routes: RoutesWithData = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: `reload` })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
