@@ -1,6 +1,6 @@
 package com.a1tSign.shikiadapter.controller.advice;
 
-import com.a1tSign.shikiadapter.exception.ShikiAdapterException;
+import com.a1tSign.shikiadapter.contracts.exception.ShikiAdapterException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

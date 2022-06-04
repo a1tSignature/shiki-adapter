@@ -6,7 +6,6 @@ import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
 import com.a1tSign.shikiadapter.contracts.enums.TitleType;
 import com.a1tSign.shikiadapter.entity.TitleEntity;
 import com.a1tSign.shikiadapter.entity.TitleListEntity;
-import com.a1tSign.shikiadapter.exception.ShikiAdapterException;
 import com.a1tSign.shikiadapter.repository.TitleListRepository;
 import com.a1tSign.shikiadapter.repository.TitleRepository;
 import com.a1tSign.shikiadapter.util.Mapper;

@@ -25,12 +25,18 @@ springdoc:
   swagger-ui:
     path: /swagger-ui-custom.html
 
+api:
+  kodik-api:
+    url: https://kodikapi.com
+    enable-feign-client: true
+    token: 8dbadba6fae83b80586e4656b562e464
+
 ---
 spring:
   profiles: development
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/report-service
+    url: jdbc:postgresql://localhost:5432/shiki-adapter
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

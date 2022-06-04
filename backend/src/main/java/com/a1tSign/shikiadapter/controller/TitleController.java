@@ -1,7 +1,8 @@
 package com.a1tSign.shikiadapter.controller;
 
+import com.a1tSign.shikiadapter.contracts.api.KodikApi;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
-import com.a1tSign.shikiadapter.exception.ShikiAdapterException;
+import com.a1tSign.shikiadapter.contracts.exception.ShikiAdapterException;
 import com.a1tSign.shikiadapter.service.title.TitleService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.webjars.NotFoundException;
 
 @RestController
 @RequestMapping("/api/v0/title")
@@ -18,6 +18,7 @@ import org.webjars.NotFoundException;
 public class TitleController {
 
     private final TitleService titleService;
+    private final KodikApi kodikApi;
 
     @GetMapping("")
     @ApiResponse (responseCode = "404", description = "Title not found",
