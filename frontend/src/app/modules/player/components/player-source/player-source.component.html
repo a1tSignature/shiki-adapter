@@ -1,1 +1,13 @@
-<p>player-source works!</p>
+<div class="uk-flex uk-flex-column uk-height-1-1">
+  <h3>{{title?.name}}</h3>
+  <div class="player-source-list uk-height-1-1 uk-overflow-auto">
+    <ng-container *ngFor="let source of sources">
+      <button
+        class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
+        [class.uk-button-primary]="source === (playerSourceService.source$ | async)"
+        (click)="playerSourceService.setSrc(source)">
+        {{source.episode}} - {{source.kind}}
+      </button>
+    </ng-container>
+  </div>
+</div>

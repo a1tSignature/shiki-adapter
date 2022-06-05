@@ -44,4 +44,8 @@ export class TitleService {
     // todo return real updates
     return of(null);
   }
+
+  get(id: number): Observable<Maybe<TitleInfo>> {
+    return this.httpClient.get<TitleInfo>(`${SHIKIMORI_URL}/api/animes/${id}`);
+  }
 }

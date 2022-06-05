@@ -1,3 +1,14 @@
 <div class="player">
-  <span>player</span>
+  <ng-container *ngIf="playerSourceService.source$ | async as source; else no_source">
+    <iframe
+      [src]="source.url | safe"
+      allowfullscreen=""
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      width="618.662" height="349.075"
+    ></iframe>
+  </ng-container>
 </div>
+
+<ng-template #no_source>
+  <span>Выберите источник</span>
+</ng-template>
