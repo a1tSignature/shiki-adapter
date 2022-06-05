@@ -7,3 +7,13 @@ export interface UserInfo {
 export const DefaultUserInfo: UserInfo = {
   userRole: UserRole.GUEST,
 };
+
+interface TitleEpisode {
+  link: string,
+  episode: number,
+  source: string,
+}
+
+interface TitleSeries extends Array<TitleEpisode> {
+
+}
