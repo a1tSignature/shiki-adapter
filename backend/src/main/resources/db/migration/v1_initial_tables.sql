@@ -1,5 +1,6 @@
 create table title (
     title_id uuid not null primary key,
+    shikimori_id int4 unique,
     name varchar unique,
     original_image_link varchar,
     content jsonb,

@@ -1,7 +1,6 @@
-package com.a1tSign.shikiadapter.contracts.dto.from;
+package com.a1tSign.shikiadapter.contracts.dto.from.kodik;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,23 +8,7 @@ import lombok.Setter;
 
 import java.time.Instant;
 import java.util.List;
-
-/**
- * DTO for kodik-api repsonse.
- */
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class KodikResponseDto {
-
-    private String time;
-
-    private String total;
-
-    @JsonDeserialize
-    private List<KodikTitleDataDto> results;
-}
+import java.util.Map;
 
 /**
  * Title data class.
@@ -34,18 +17,18 @@ public class KodikResponseDto {
 @NoArgsConstructor
 @Getter
 @Setter
-class KodikTitleDataDto {
+public class KodikTitleDataDto {
     private String id;
 
     private String type;
 
-    @JsonProperty("title_orig")
+    @JsonProperty ("title_orig")
     private String titleOriginalName;
 
-    @JsonProperty("title")
+    @JsonProperty ("title")
     private String titleName;
 
-    @JsonProperty("shikimori_id")
+    @JsonProperty ("shikimori_id")
     private Long shikimoriId;
 
     /**
@@ -58,15 +41,18 @@ class KodikTitleDataDto {
      */
     private String quality;
 
-    @JsonProperty("created_at")
+    @JsonProperty ("created_at")
     private Instant createdAt;
 
-    @JsonProperty("updated_at")
+    @JsonProperty ("updated_at")
     private Instant updatedAt;
 
-    @JsonProperty("blocked_countries")
+    @JsonProperty ("blocked_countries")
     private List<String> blockedCountries;
 
-    @JsonProperty("blocked_seasons")
-    private List<String> blockedSeasons;
+    @JsonProperty("seasons")
+    private Map<String, KodikSeasonsDataDto> seasons;
+
+    private TranslationFrom translation;
+
 }

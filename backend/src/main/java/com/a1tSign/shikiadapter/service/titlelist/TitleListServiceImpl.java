@@ -28,7 +28,7 @@ public class TitleListServiceImpl implements TitleListService {
     static {
         set = new HashSet<>();
         set.add(new TitleEntity(UUID.randomUUID(), "mock", "mock", new HashMap<>(),
-                TitleType.SPECIAL, TitleStatus.ANONS));
+                TitleType.SPECIAL, TitleStatus.ANONS, 2334));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class TitleListServiceImpl implements TitleListService {
 
         var titleEntity = titleRepository.findByName(title.getName())
                 .orElse(new TitleEntity(UUID.randomUUID(), "mock", "mock", new HashMap<>(),
-                        TitleType.SPECIAL, TitleStatus.ANONS));
+                        TitleType.SPECIAL, TitleStatus.ANONS, 2334));
 //                .orElseThrow(() -> new RuntimeException("Title not found"));
 
         list.getTitles().add(titleEntity);

@@ -1,9 +1,11 @@
 package com.a1tSign.shikiadapter.service.title;
 
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
+import com.a1tSign.shikiadapter.contracts.dto.to.VideoLinkTo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TitleService {
 
@@ -14,6 +16,14 @@ public interface TitleService {
      * @return to-model of title
      */
     TitleTo findByName(String name);
+
+    /**
+     * Find the title by his name.
+     * @param title title
+     *
+     * @return to-model of title
+     */
+    Map<String, List<VideoLinkTo>> findByShikimoriId(TitleTo title);
 
     /**
      * Search all titles, including some string in their name.

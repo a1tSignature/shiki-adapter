@@ -46,4 +46,7 @@ public class TitleEntity {
 
     @Column(name = "status")
     private TitleStatus status;
+
+    @Column(name = "shikimori_id")
+    private Integer shikimoriId;
 }

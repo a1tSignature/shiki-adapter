@@ -1,9 +1,11 @@
 package com.a1tSign.shikiadapter.contracts.api;
 
-import com.a1tSign.shikiadapter.contracts.dto.from.KodikResponseDto;
+import com.a1tSign.shikiadapter.contracts.dto.from.kodik.KodikResponseDto;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+
+import java.util.List;
 
 /**
  * Rest-api for kodik.
@@ -24,9 +26,9 @@ public interface KodikApi {
      * @return dto of the response of the api.
      */
     @RequestLine("POST /search?token={token}&shikimori_id={id}&camrip={isCamrip}" +
-            "&prioritize_translation_type={translationType}")
-    KodikResponseDto getAnimesByShikimoriId(@Param String token, @Param Long id, @Param String translationType,
-                               @Param Boolean isCamrip);
+            "&prioritize_translation_type={translationType}&not_blocked_in={blocked}&with_episodes=true&limit=5")
+    KodikResponseDto getAnimesByShikimoriId(@Param String token, @Param Integer id, @Param String translationType,
+                                            @Param Boolean isCamrip, @Param String blocked);
 
     /**
      * Querying anime by russian title name.

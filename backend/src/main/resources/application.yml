@@ -4,9 +4,9 @@ spring:
   application:
     name: shiki-adapter
   datasource:
-    url: jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/de9vajg04p5t04
-    username: tzditeanalkdhs
-    password: 034defafcab5c0b042a9738768a230766dd97335bfc651c9bbc9ea643c69a0e4
+    url: jdbc:postgresql://ec2-52-48-159-67.eu-west-1.compute.amazonaws.com:5432/d2gca1mf3sm2qf
+    username: gmaqygqwilphrn
+    password: 3678e7e27a9d914340cdeb34e0f7f371f86fd5fa2eee0205e82aa3252c3f91db
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -26,10 +26,20 @@ springdoc:
     path: /swagger-ui-custom.html
 
 api:
+  default: kodik
+
   kodik-api:
     url: https://kodikapi.com
     enable-feign-client: true
     token: 8dbadba6fae83b80586e4656b562e464
+    blocked-regions: RU, UA, KZ
+  shikimori-v1:
+    url: https://shikimori.one
+    enable-feign-client: true
+    client-id: BVHnZI_noTQ-9qDSYkW5CEI5Vum4rGcv5pjn5NYy86M
+    client-secret: HVHbiwjEB7Fij7MFn2FYa_efSEr3iwBS4ps4XPyFZhk
+
+
 
 ---
 spring:
