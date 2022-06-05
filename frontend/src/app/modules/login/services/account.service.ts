@@ -3,6 +3,13 @@ import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 import { DefaultUserInfo, UserInfo } from "#models/user/user-info";
 import { UserRole } from "#models/user/role/user-role";
 
+export interface AuthResponse {
+  access_token: string,
+  expires_in: 86400,
+  refresh_token: string,
+  scope: string,
+}
+
 @Injectable({
   providedIn: `root`,
 })
@@ -15,8 +22,10 @@ export class AccountService implements OnDestroy {
     this.userInfo$ = this.userInfo.asObservable().pipe(
       takeUntil(this.destroy$),
     );
-    if (localStorage.getItem(`__mockAuthorized`) === UserRole.USER) {
-      this.mockAuthorizeUser();
+    if (localStorage.getItem(`__userRole`) === UserRole.USER && localStorage.getItem(`__authResponse`)) {
+      this.userInfo.next({
+        userRole: UserRole.USER,
+      });
     }
   }
 
@@ -32,10 +41,11 @@ export class AccountService implements OnDestroy {
     localStorage.removeItem(`__mockAuthorized`);
   }
 
-  mockAuthorizeUser(): void {
+  authorizeUser(authResponse: AuthResponse): void {
     this.userInfo.next({
       userRole: UserRole.USER,
     });
-    localStorage.setItem(`__mockAuthorized`, UserRole.USER);
+    localStorage.setItem(`__userRole`, UserRole.USER);
+    localStorage.setItem(`__authResponse`, JSON.stringify(authResponse));
   }
 }

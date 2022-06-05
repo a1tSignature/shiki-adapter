@@ -6,7 +6,7 @@
         class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
         [class.uk-button-primary]="source === (playerSourceService.source$ | async)"
         (click)="playerSourceService.setSrc(source)">
-        {{source.episode}} - {{source.kind}}
+        {{source.number}} - {{source.source}}
       </button>
     </ng-container>
   </div>

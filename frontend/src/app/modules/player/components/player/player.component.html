@@ -1,7 +1,7 @@
 <div class="player">
   <ng-container *ngIf="playerSourceService.source$ | async as source; else no_source">
     <iframe
-      [src]="source.url | safe"
+      [src]="source.link | safe"
       allowfullscreen=""
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       width="618.662" height="349.075"
