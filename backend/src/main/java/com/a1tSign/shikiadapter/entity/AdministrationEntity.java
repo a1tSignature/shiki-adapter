@@ -31,7 +31,4 @@ public class AdministrationEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
-
-    private Boolean disabled;
-
 }

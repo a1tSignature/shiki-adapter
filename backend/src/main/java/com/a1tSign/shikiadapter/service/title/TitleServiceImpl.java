@@ -58,7 +58,7 @@ public class TitleServiceImpl implements TitleService{
     @Override
     public TitleTo updateTitle(TitleTo titleTo) {
 
-        var title = titleRepository.findByName(titleTo.getName());
+        var title = titleRepository.findByShikimoriId(titleTo.getShikimoriId());
 
         if (title.isPresent()) {
             title.get().setContent(titleTo.getContent());

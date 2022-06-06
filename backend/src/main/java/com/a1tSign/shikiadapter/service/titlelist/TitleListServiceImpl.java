@@ -1,18 +1,17 @@
 package com.a1tSign.shikiadapter.service.titlelist;
 
-import com.a1tSign.shikiadapter.contracts.api.ShikimoriV1Api;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleListTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
-import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
-import com.a1tSign.shikiadapter.contracts.enums.TitleType;
 import com.a1tSign.shikiadapter.contracts.exception.ShikiAdapterException;
 import com.a1tSign.shikiadapter.entity.TitleEntity;
 import com.a1tSign.shikiadapter.entity.TitleListEntity;
 import com.a1tSign.shikiadapter.repository.TitleListRepository;
 import com.a1tSign.shikiadapter.repository.TitleRepository;
+import com.a1tSign.shikiadapter.service.video.VideoLinkLoaderService;
 import com.a1tSign.shikiadapter.util.Mapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,6 +23,10 @@ public class TitleListServiceImpl implements TitleListService {
 
     private final TitleListRepository titleListRepository;
     private final TitleRepository titleRepository;
+    private final VideoLinkLoaderService videoLinkLoaderService;
+
+    @Value("${api.default}")
+    private String source;
 
     @Override
     @SneakyThrows
@@ -60,6 +63,9 @@ public class TitleListServiceImpl implements TitleListService {
         TitleEntity unpackedEntity;
         if (titleEntity.isEmpty()) {
             unpackedEntity = Mapper.toTitleEntity(title);
+            if (unpackedEntity.getContent() == null) {
+                unpackedEntity.setContent(videoLinkLoaderService.loadVideoLink(title, source));
+            }
             titleRepository.save(unpackedEntity);
         } else {
             unpackedEntity = titleEntity.get();
