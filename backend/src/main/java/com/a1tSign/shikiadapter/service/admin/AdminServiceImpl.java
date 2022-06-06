@@ -38,7 +38,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public Boolean deleteModerator(String username) {
-        administrationRepository.deleteByName(username);
+        administrationRepository.deleteByUsername(username);
         return true;
     }
 

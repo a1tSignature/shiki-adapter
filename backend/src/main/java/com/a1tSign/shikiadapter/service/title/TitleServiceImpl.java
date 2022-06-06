@@ -26,7 +26,6 @@ public class TitleServiceImpl implements TitleService{
 
     private final TitleRepository titleRepository;
     private final VideoLinkLoaderService videoLinkLoaderService;
-    private final ShikimoriV1Api shikimoriV1Api;
 
     @Value("${api.default}")
     private String source;
@@ -54,7 +53,6 @@ public class TitleServiceImpl implements TitleService{
                 : titles.stream().map(Mapper::fromTitleEntity).collect(Collectors.toList());
     }
 
-    //TODO: need to use custom adapter for receiving video-content, mocked
     @Override
     public TitleTo updateTitle(TitleTo titleTo) {
 
