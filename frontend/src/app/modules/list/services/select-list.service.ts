@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, switchMap } from "rxjs";
-import { ListTag, ListType } from "#models/list/list-type";
+import { BehaviorSubject, map, Observable, switchMap, tap } from "rxjs";
+import { ListTag, ListType, ListTypeUpdatable } from "#models/list/list-type";
 import { Maybe } from "#types/maybe";
-import { TitleInfo } from "#models/title/title-info";
+import { TitleInfo, titleInfoConvertToSa, TitleInfoSA, titleInfoSaConvertToShiki } from "#models/title/title-info";
 import { HttpClient } from "@angular/common/http";
 import { SettingsService } from "#services/settings.service";
 import { AccountService } from "#modules/login/services/account.service";
@@ -23,17 +23,56 @@ export class SelectListService {
     this.selectedType$ = this.selectedType.asObservable();
     this.selectedList$ = this.selectedType$.pipe(
       switchMap(this.fetchList),
-    );
+      map((item: any) => item.titles.map((title) => titleInfoSaConvertToShiki(title))),
+      tap((d) => console.log(d)),
+    ) as any;
   }
 
   selectList(type: ListType): void {
     this.selectedType.next(type);
   }
 
-  private fetchList = (type: ListType): Observable<Maybe<TitleInfo[]>> => {
+  getAllLists(): Observable<any> {
     return this.accountService.userInfo$.pipe(
       switchMap((user) =>
-        this.httpClient.post<Maybe<TitleInfo[]>>(
+        this.httpClient.get<any>(
+          this.settingsService.appSettings.apiEndpoint + `/title-list/fetch/all-lists?token=${user.accessToken}`,
+        ),
+      ),
+    );
+  }
+
+  addTitleToList(title: TitleInfo | null, listType: ListTypeUpdatable): void {
+    if (!title) {
+      console.log(`No title cannot add`);
+      return;
+    }
+
+    this.accountService.userInfo$.pipe(
+      switchMap((user) =>
+        this.httpClient.post(
+          this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[listType]}/add?token=${user.accessToken}`,
+          { ...titleInfoConvertToSa(title) },
+        ),
+      ),
+    ).subscribe();
+  }
+
+  removeTitleFromList(title: TitleInfo, listType: ListTypeUpdatable): void {
+    this.accountService.userInfo$.pipe(
+      switchMap((user) =>
+        this.httpClient.post(
+          this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[listType]}/remove?token=${user.accessToken}`,
+          { ...titleInfoConvertToSa(title) },
+        ),
+      ),
+    );
+  }
+
+  public fetchList = (type: ListType): Observable<Maybe<TitleInfoSA[]>> => {
+    return this.accountService.userInfo$.pipe(
+      switchMap((user) =>
+        this.httpClient.post<Maybe<TitleInfoSA[]>>(
           this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[type]}?token=${user.accessToken}`,
           {},
         ),
