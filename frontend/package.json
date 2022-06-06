@@ -22,6 +22,7 @@
     "@angular/router": "~13.1.0",
     "angular-oauth2-oidc": "^13.0.1",
     "moment": "^2.29.3",
+    "ng-yandex-metrika": "^6.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "uikit": "^3.13.4",

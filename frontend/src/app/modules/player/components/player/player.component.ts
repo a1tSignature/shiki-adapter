@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlayerSourceService } from "#modules/player/services/player-source.service";
+import { Metrika } from "ng-yandex-metrika";
 
 @Component({
   selector: `app-player`,
@@ -8,6 +9,6 @@ import { PlayerSourceService } from "#modules/player/services/player-source.serv
 })
 export class PlayerComponent {
 
-  constructor(public playerSourceService: PlayerSourceService) {}
+  constructor(public playerSourceService: PlayerSourceService, public metrika: Metrika) {}
 
 }

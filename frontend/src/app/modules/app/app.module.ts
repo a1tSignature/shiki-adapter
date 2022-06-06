@@ -10,6 +10,7 @@ import { FooterModule } from "#modules/footer/footer.module";
 import { SearchModule } from "#modules/search/search.module";
 import { OAuthModule } from "angular-oauth2-oidc";
 import { ListModule } from "#modules/list/list.module";
+import { MetrikaModule } from "ng-yandex-metrika";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,9 @@ import { ListModule } from "#modules/list/list.module";
     SearchModule,
     ListModule,
     OAuthModule.forRoot(),
+    MetrikaModule.forRoot(
+      { id: 88670965, webvisor: true },
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

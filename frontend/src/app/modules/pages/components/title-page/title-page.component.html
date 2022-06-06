@@ -16,7 +16,7 @@
       <div class="uk-flex uk-flex-column uk-height-1-1">
         <h3>Добавить / Удалить из списка</h3>
         <div class="player-source-list uk-height-1-1 uk-overflow-auto">
-          <ng-container *ngFor="let item of ListType | keyvalue">
+          <ng-container *ngFor="let item of ListTypeUpdatable | keyvalue">
             <div
               [class.uk-button-default]="!activeLists.get(item.value)"
               [class.uk-button-primary]="activeLists.get(item.value)"

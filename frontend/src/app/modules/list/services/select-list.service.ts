@@ -42,7 +42,7 @@ export class SelectListService {
     );
   }
 
-  addTitleToList(title: TitleInfo | null, listType: ListTypeUpdatable): void {
+  addTitleToList(title: TitleInfo | null, listType: ListTypeUpdatable, callback): void {
     if (!title) {
       console.log(`No title cannot add`);
       return;
@@ -55,10 +55,10 @@ export class SelectListService {
           { ...titleInfoConvertToSa(title) },
         ),
       ),
-    ).subscribe();
+    ).subscribe(callback);
   }
 
-  removeTitleFromList(title: TitleInfo, listType: ListTypeUpdatable): void {
+  removeTitleFromList(title: TitleInfo, listType: ListTypeUpdatable, callback): void {
     this.accountService.userInfo$.pipe(
       switchMap((user) =>
         this.httpClient.post(
@@ -66,7 +66,7 @@ export class SelectListService {
           { ...titleInfoConvertToSa(title) },
         ),
       ),
-    );
+    ).subscribe(callback);
   }
 
   public fetchList = (type: ListType): Observable<Maybe<TitleInfoSA[]>> => {
