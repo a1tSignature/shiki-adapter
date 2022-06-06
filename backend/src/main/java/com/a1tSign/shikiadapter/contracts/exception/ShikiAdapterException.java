@@ -1,4 +1,4 @@
-package com.a1tSign.shikiadapter.exception;
+package com.a1tSign.shikiadapter.contracts.exception;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

@@ -34,6 +34,7 @@ public class Mapper {
                 .setOriginalImageLink(titleTo.getOriginalImageLink())
                 .setContent(titleTo.getContent())
                 .setKind(TitleType.of(titleTo.getKind()))
-                .setStatus(TitleStatus.of(titleTo.getStatus()));
+                .setStatus(TitleStatus.of(titleTo.getStatus()))
+                .setShikimoriId(titleTo.getShikimoriId());
     }
 }

@@ -21,6 +21,14 @@ public interface TitleRepository extends JpaRepository<TitleEntity, UUID> {
     Optional<TitleEntity> findByName(String name);
 
     /**
+     * Find title by his name.
+     *
+     * @param id shikimoriID of title
+     * @return entity of title
+     */
+    Optional<TitleEntity> findByShikimoriId(Integer id);
+
+    /**
      * Search all titles including some string.
      *
      * @param name query string
