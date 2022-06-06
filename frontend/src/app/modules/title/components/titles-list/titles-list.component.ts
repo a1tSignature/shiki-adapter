@@ -31,6 +31,8 @@ export class TitlesListComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
+  // todo запретить добавлять в обновления
+
   ngOnInit(): void {
     this.titles.pipe(
       indicate(this.loading$),

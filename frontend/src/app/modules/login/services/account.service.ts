@@ -25,6 +25,7 @@ export class AccountService implements OnDestroy {
     if (localStorage.getItem(`__userRole`) === UserRole.USER && localStorage.getItem(`__authResponse`)) {
       this.userInfo.next({
         userRole: UserRole.USER,
+        accessToken: JSON.parse(localStorage.getItem(`__authResponse`) ?? `{}`).access_token,
       });
     }
   }
@@ -38,12 +39,14 @@ export class AccountService implements OnDestroy {
     this.userInfo.next({
       userRole: UserRole.GUEST,
     });
-    localStorage.removeItem(`__mockAuthorized`);
+    localStorage.removeItem(`__userRole`);
+    localStorage.removeItem(`__authResponse`);
   }
 
   authorizeUser(authResponse: AuthResponse): void {
     this.userInfo.next({
       userRole: UserRole.USER,
+      accessToken: authResponse.access_token,
     });
     localStorage.setItem(`__userRole`, UserRole.USER);
     localStorage.setItem(`__authResponse`, JSON.stringify(authResponse));

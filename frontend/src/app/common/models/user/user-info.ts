@@ -2,6 +2,7 @@ import { UserRole } from "#src/app/common/models/user/role/user-role";
 
 export interface UserInfo {
   userRole: UserRole,
+  accessToken?: string,
 }
 
 export const DefaultUserInfo: UserInfo = {
