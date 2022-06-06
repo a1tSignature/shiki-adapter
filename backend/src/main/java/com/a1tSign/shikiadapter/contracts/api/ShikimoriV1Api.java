@@ -1,6 +1,7 @@
 package com.a1tSign.shikiadapter.contracts.api;
 
 import com.a1tSign.shikiadapter.contracts.dto.from.ShikimoriTokenDataFrom;
+import com.a1tSign.shikiadapter.contracts.dto.from.ShikimoriUserDataDto;
 import com.a1tSign.shikiadapter.contracts.dto.from.TitleFrom;
 import feign.Headers;
 import feign.Param;
@@ -28,6 +29,12 @@ public interface ShikimoriV1Api {
     ShikimoriTokenDataFrom getToken(@Param("grant_type") String grantType, @Param("client_id") String clientId,
                                     @Param("client_secret") String clientSecret, @Param("code") String code,
                                     @Param("redirect_uri") String redirectUri);
+
+    @Headers({"User-Agent: shiki-adapter-back",
+              "Authorization: Bearer {auth}"})
+    @RequestLine("GET /api/users/whoami")
+    ShikimoriUserDataDto getCurrentUser(@Param String auth);
+
 
 
 

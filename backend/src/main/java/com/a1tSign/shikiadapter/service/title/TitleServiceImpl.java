@@ -36,18 +36,15 @@ public class TitleServiceImpl implements TitleService{
         return null;
     }
 
-    //TODO:: add dynamic loading of title-content
     @Override
     public Map<String, List<VideoLinkTo>> findByShikimoriId(TitleTo title) {
         var entity = titleRepository.findByShikimoriId(title.getShikimoriId());
 
-//        if (entity.isPresent()) {
-//            return fromTitleEntity(entity.get());
-//        } else {
-            var link = videoLinkLoaderService.loadVideoLink(title, source);
-//            title.setContent(link);
-            return link;
-//        }
+        if (entity.isPresent()) {
+            return entity.get().getContent();
+        } else {
+            return videoLinkLoaderService.loadVideoLink(title, source);
+        }
     }
 
     @Override

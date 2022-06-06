@@ -1,5 +1,6 @@
 package com.a1tSign.shikiadapter.entity;
 
+import com.a1tSign.shikiadapter.contracts.dto.to.VideoLinkTo;
 import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
 import com.a1tSign.shikiadapter.contracts.enums.TitleType;
 import lombok.AllArgsConstructor;
@@ -39,7 +40,7 @@ public class TitleEntity {
 
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb", name = "content")
-    private Map<String, List<String>> content = new HashMap<>();
+    private Map<String, List<VideoLinkTo>> content = new HashMap<>();
 
     @Column(name = "kind")
     private TitleType kind;

@@ -13,5 +13,5 @@ public interface TitleListService {
 
     Boolean addTitle(TitleTo title, String username, String titleListName);
 
-//    Boolean removeTitle(TitleTo title);
+    Boolean removeTitleFromList(TitleTo title, String list, String username);
 }

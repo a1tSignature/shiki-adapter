@@ -18,7 +18,7 @@ import java.util.Map;
 public class TitleTo {
     private String name;
     private String originalImageLink;
-    private Map<String, List<String>> content;
+    private Map<String, List<VideoLinkTo>> content;
     private String kind;
     private String status;
     @JsonProperty("shikimori_id")

@@ -41,7 +41,7 @@ public class KodikFetcherUseCase {
                 .collect(Collectors.groupingBy(VideoLinkTo::getNumber));
         d.values().forEach(s -> {
             AtomicInteger count = new AtomicInteger(0);
-            s.forEach(p -> p.setSource(voices.get(count.getAndIncrement())));
+            s.forEach(p -> p.setSource(voices.get(getAndIncrement(count, voices).get())));
         });
 
         return d;
@@ -51,5 +51,12 @@ public class KodikFetcherUseCase {
 
         return getLinkByShikimoriId(kodikToken, title.getShikimoriId(), TranslationType.VOICE.getName(),
                 false);
+    }
+
+    private AtomicInteger getAndIncrement(AtomicInteger number, List<String> voices) {
+        if(number.get() + 1 == voices.size()) {
+            number = new AtomicInteger(0);
+        }
+        return number;
     }
 }

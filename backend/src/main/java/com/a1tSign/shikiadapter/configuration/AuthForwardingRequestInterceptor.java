@@ -29,16 +29,16 @@ public class AuthForwardingRequestInterceptor implements RequestInterceptor {
             return;
         }
 
-        String auth = Optional.ofNullable(RequestContextHolder.getRequestAttributes())
-                .map(ServletRequestAttributes.class::cast)
-                .map(ServletRequestAttributes::getRequest)
-                .map(req -> req.getHeader(HttpHeaders.AUTHORIZATION))
-                .orElse(null);
-
-        if (auth != null) {
-            template.header(HttpHeaders.AUTHORIZATION, auth);
-        } else {
-            throw new IllegalStateException("cannot determine authorization header");
-        }
+//        String auth = Optional.ofNullable(RequestContextHolder.getRequestAttributes())
+//                .map(ServletRequestAttributes.class::cast)
+//                .map(ServletRequestAttributes::getRequest)
+//                .map(req -> req.getHeader(HttpHeaders.AUTHORIZATION))
+//                .orElse(null);
+//
+//        if (auth != null) {
+//            template.header(HttpHeaders.AUTHORIZATION, auth);
+//        } else {
+//            throw new IllegalStateException("cannot determine authorization header");
+//        }
     }
 }
