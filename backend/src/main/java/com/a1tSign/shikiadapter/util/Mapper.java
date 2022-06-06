@@ -3,6 +3,8 @@ package com.a1tSign.shikiadapter.util;
 import com.a1tSign.shikiadapter.contracts.dto.to.ModeratorTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleListTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
+import com.a1tSign.shikiadapter.contracts.dto.to.TokenRequest;
+import com.a1tSign.shikiadapter.contracts.enums.Role;
 import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
 import com.a1tSign.shikiadapter.contracts.enums.TitleType;
 import com.a1tSign.shikiadapter.entity.AdministrationEntity;
@@ -48,12 +50,11 @@ public class Mapper {
                 .setRole(entity.getRole());
     }
 
-    public static AdministrationEntity toAdministrationEntity(ModeratorTo moderator, String password) {
+    public static AdministrationEntity toAdministrationEntity(TokenRequest moderator, String password) {
         return new AdministrationEntity()
-                .setId(moderator.getId())
+                .setId(UUID.randomUUID())
                 .setUsername(moderator.getUsername())
-                .setRole(moderator.getRole())
-                .setPassword(password)
-                .setDisabled(false);
+                .setRole(Role.of(moderator.getRole()))
+                .setPassword(password);
     }
 }

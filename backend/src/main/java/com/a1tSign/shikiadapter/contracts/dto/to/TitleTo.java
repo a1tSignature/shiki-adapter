@@ -21,6 +21,5 @@ public class TitleTo {
     private Map<String, List<VideoLinkTo>> content;
     private String kind;
     private String status;
-    @JsonProperty("shikimori_id")
     private Integer shikimoriId;
 }
