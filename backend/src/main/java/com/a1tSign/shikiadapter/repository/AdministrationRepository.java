@@ -13,4 +13,8 @@ public interface AdministrationRepository extends JpaRepository<AdministrationEn
 
     @Query(value = "FROM AdministrationEntity WHERE role = 'MODERATOR'")
     List<AdministrationEntity> findAllModerators();
+
+    @Query(value = "DELETE FROM AdministrationEntity WHERE role = 'MODERATOR' and username = :name")
+    AdministrationEntity deleteByName(String name);
+
 }

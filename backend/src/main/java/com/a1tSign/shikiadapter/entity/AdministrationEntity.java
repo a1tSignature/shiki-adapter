@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Accessors(chain = true)
 @Table(name = "administration")
 public class AdministrationEntity {
 

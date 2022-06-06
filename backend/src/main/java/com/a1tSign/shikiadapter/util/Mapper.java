@@ -1,9 +1,11 @@
 package com.a1tSign.shikiadapter.util;
 
+import com.a1tSign.shikiadapter.contracts.dto.to.ModeratorTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleListTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
 import com.a1tSign.shikiadapter.contracts.enums.TitleStatus;
 import com.a1tSign.shikiadapter.contracts.enums.TitleType;
+import com.a1tSign.shikiadapter.entity.AdministrationEntity;
 import com.a1tSign.shikiadapter.entity.TitleEntity;
 import com.a1tSign.shikiadapter.entity.TitleListEntity;
 
@@ -18,7 +20,8 @@ public class Mapper {
                 .setOriginalImageLink(entity.getOriginalImageLink())
                 .setContent(entity.getContent())
                 .setKind(entity.getKind().getValue())
-                .setStatus(entity.getStatus().getName());
+                .setStatus(entity.getStatus().getName())
+                .setShikimoriId(entity.getShikimoriId());
     }
 
     public static TitleListTo fromTitleListEntity(TitleListEntity entity) {
@@ -36,5 +39,21 @@ public class Mapper {
                 .setKind(TitleType.of(titleTo.getKind()))
                 .setStatus(TitleStatus.of(titleTo.getStatus()))
                 .setShikimoriId(titleTo.getShikimoriId());
+    }
+
+    public static ModeratorTo fromAdministrationEntity(AdministrationEntity entity) {
+        return new ModeratorTo()
+                .setId(entity.getId())
+                .setUsername(entity.getUsername())
+                .setRole(entity.getRole());
+    }
+
+    public static AdministrationEntity toAdministrationEntity(ModeratorTo moderator, String password) {
+        return new AdministrationEntity()
+                .setId(moderator.getId())
+                .setUsername(moderator.getUsername())
+                .setRole(moderator.getRole())
+                .setPassword(password)
+                .setDisabled(false);
     }
 }
