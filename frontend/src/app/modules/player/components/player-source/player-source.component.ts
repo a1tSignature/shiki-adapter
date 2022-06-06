@@ -30,7 +30,7 @@ export class PlayerSourceComponent implements OnInit {
         this.httpClient
           .post<PlayerSources>(
             `${this.settingsService.appSettings.apiEndpoint}/title`,
-            { shikimori_id: params.get(`id`) },
+            { shikimoriId: params.get(`id`) },
             { headers: { [`Content-Type`]: `application/json` } },
           ),
       ),
