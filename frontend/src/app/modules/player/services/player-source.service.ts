@@ -15,9 +15,6 @@ export class PlayerSourceService {
   constructor() {
     this.source$ = this.source.asObservable();
     this.options$ = this.options.asObservable();
-
-    // todo remove
-    // this.setSrc(`https://video.sibnet.ru/shell.php?videoid=4665976`);
   }
 
   setSrc(src: PlayerSource): void {

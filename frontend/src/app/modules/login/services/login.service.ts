@@ -56,7 +56,6 @@ export class LoginService {
 
       this.httpClient.post<AuthResponse>(`${SHIKIMORI_URL}/oauth/token`, data, { headers })
         .subscribe((response) => {
-          // todo send code to backend and receive session
           this.accountService.authorizeUser(response);
           window.location.reload();
         });
