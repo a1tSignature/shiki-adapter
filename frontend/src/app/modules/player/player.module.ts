@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerSourceComponent } from './components/player-source/player-source.component';
 import { SafePipe } from "#src/app/modules/player/pipes/safe-pipe";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SafePipe } from "#src/app/modules/player/pipes/safe-pipe";
   ],
   imports: [
     CommonModule,
+    FormsModule,
   ],
 })
 export class PlayerModule {}

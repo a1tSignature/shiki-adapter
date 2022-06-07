@@ -60,6 +60,7 @@ export class AccountService implements OnDestroy {
 
     this.userInfo.next({
       userRole: data.role,
+      jwtToken: jwt,
     });
     localStorage.setItem(`__userRole`, data.role);
     localStorage.setItem(`__jwtToken`, jwt);

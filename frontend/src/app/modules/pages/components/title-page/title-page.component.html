@@ -4,11 +4,15 @@
       <app-player></app-player>
     </div>
   </div>
-  <div class="title-page__block title-page__block_right  uk-height-1-1 uk-width-1-3 uk-width-1-4@l">
+  <div class="title-page__block title-page__block_right  uk-height-1-1"
+       [class.uk-width-1-2]="(accountService.userInfo$ | async)?.userRole === UserRole.MODERATOR"
+       [class.uk-width-1-3]="(accountService.userInfo$ | async)?.userRole !== UserRole.MODERATOR"
+  >
     <div class="uk-height-1-1 uk-card uk-card-default uk-card-body">
       <app-player-source [title]="title"></app-player-source>
     </div>
   </div>
+
   <div
     *ngIf="(accountService.userInfo$ | async)?.userRole === UserRole.USER"
     class="title-page__block title-page__block_right  uk-height-1-1 uk-width-1-3 uk-width-1-4@l">
