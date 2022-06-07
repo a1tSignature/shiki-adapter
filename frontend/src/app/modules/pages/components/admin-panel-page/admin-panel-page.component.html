@@ -14,7 +14,13 @@
     class="uk-flex uk-flex-between uk-flex-middle uk-margin-bottom"
   >
     <div>{{moderator.id}}</div>
-    <div class="uk-margin-left">{{moderator.username}}</div>
+    <div class="uk-margin-left">
+      {{moderator.username}}
+    </div>
+    <div class="uk-margin-left">
+      <input class="uk-input" placeholder="Новый пароль" [(ngModel)]="newPassword[moderator.username]">
+    </div>
     <button (click)="remove(moderator.username)" class="uk-button uk-button-danger uk-margin-left">Удалить</button>
+    <button (click)="update(moderator.username)" class="uk-button uk-button-primary uk-margin-left">Сохранить</button>
   </div>
 </div>

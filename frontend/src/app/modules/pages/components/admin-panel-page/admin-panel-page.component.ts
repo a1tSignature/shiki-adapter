@@ -19,6 +19,7 @@ export interface Moderator {
 export class AdminPanelPageComponent implements OnInit {
   public username: string;
   public password: string;
+  public newPassword = {};
 
   public moderators: Array<Moderator> = [];
 
@@ -82,6 +83,31 @@ export class AdminPanelPageComponent implements OnInit {
       ),
     ).subscribe(() => {
       this.fetchModerators();
+    });
+  }
+
+  update(username: string): void {
+    if (!this.newPassword[username]) {
+      alert(`Введите пароль`);
+      return;
+    }
+    this.accountService.userInfo$.pipe(
+      switchMap((user) => {
+          const headers = new HttpHeaders({ [`Authorization`]: `Bearer ${user.jwtToken}` });
+          return this.httpClient.post<any>(
+            this.settingsService.appSettings.apiEndpoint + `/admin/${username}/update`,
+            {
+              username: username,
+              password: this.newPassword[username],
+              role: UserRole.MODERATOR,
+            },
+            { headers },
+          );
+        },
+      ),
+    ).subscribe(() => {
+      this.fetchModerators();
+      delete this.newPassword[username];
     });
   }
 
