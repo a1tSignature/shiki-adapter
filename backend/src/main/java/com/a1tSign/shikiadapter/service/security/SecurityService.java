@@ -18,7 +18,7 @@ public class SecurityService {
     private final AdminService adminService;
 
     public TokenTo getToken(TokenRequest tokenRequest) {
-        var userFromTokenRequest = adminService.findModeratorByUsername(tokenRequest.getUsername());
+        var userFromTokenRequest = adminService.findModeratorByRequest(tokenRequest);
 
         var tokenResponseDto = new TokenTo();
         tokenResponseDto.setToken(jwtService.getToken(userFromTokenRequest));

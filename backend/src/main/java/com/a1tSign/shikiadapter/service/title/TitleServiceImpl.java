@@ -60,6 +60,7 @@ public class TitleServiceImpl implements TitleService{
 
         if (title.isPresent()) {
             title.get().setContent(titleTo.getContent());
+            titleRepository.save(title.get());
         } else {
             var titleEntity = toTitleEntity(titleTo);
             titleRepository.save(titleEntity);

@@ -15,5 +15,5 @@ public interface AdminService {
 
     Boolean updateModerator(String username, TokenRequest moderatorTo);
 
-    ModeratorTo findModeratorByUsername(String username);
+    ModeratorTo findModeratorByRequest(TokenRequest request);
 }

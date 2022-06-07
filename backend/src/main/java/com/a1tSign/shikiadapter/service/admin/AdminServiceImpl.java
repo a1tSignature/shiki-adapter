@@ -8,6 +8,7 @@ import com.a1tSign.shikiadapter.util.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,6 +38,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    @Transactional
     public Boolean deleteModerator(String username) {
         administrationRepository.deleteByUsername(username);
         return true;
@@ -53,12 +55,12 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public ModeratorTo findModeratorByUsername(String username) {
-        var moderator = administrationRepository.findByUsername(username);
+    public ModeratorTo findModeratorByRequest(TokenRequest tokenRequest) {
+        var moderator = administrationRepository.findByUsername(tokenRequest.getUsername());
 
-        if (moderator == null) {
-            throw new ShikiAdapterException("There is no moderator with username: " + username, "MODERATOR_WAS_NOT_FOUND");
+        if (moderator == null || !passwordEncoder.matches(tokenRequest.getPassword(), moderator.getPassword())) {
+            throw new ShikiAdapterException("There is no moderator with username: " + tokenRequest.getUsername(), "MODERATOR_WAS_NOT_FOUND");
         }
-        return Mapper.fromAdministrationEntity(administrationRepository.findByUsername(username));
+        return Mapper.fromAdministrationEntity(moderator);
     }
 }
