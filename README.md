@@ -17,6 +17,9 @@
   секунд, а затем обновить страницу, если она сама не перезагрузилась)
 * [Course Project](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Course_project.pdf)
 
+# Видеоматериалы
+* [Тех видос](https://youtu.be/TlHPJKfjGCs)
+
 # План разработки
 ###### Даты приблизительные, возможны задержки при разработке функциональности
 * 9 мая - реализована главная страница
