@@ -70,11 +70,23 @@ export class SelectListService {
 
   public fetchList = (type: ListType): Observable<Maybe<TitleInfoSA[]>> => {
     return this.accountService.userInfo$.pipe(
-      switchMap((user) =>
-        this.httpClient.post<Maybe<TitleInfoSA[]>>(
-          this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[type]}?token=${user.accessToken}`,
-          {},
-        ),
+      switchMap((user) => {
+          if (type === ListType.UPDATES)
+            return this.httpClient.post<any>(
+              this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[ListType.WATCHING]}?token=${user.accessToken}`,
+              {},
+            ).pipe(
+              map((item: any) => {
+                item.titles = item.titles.filter((title) => title.status === `ongoing`);
+                return item;
+              }),
+            );
+
+          return this.httpClient.post<Maybe<TitleInfoSA[]>>(
+            this.settingsService.appSettings.apiEndpoint + `/title-list/${ListTag[type]}?token=${user.accessToken}`,
+            {},
+          );
+        },
       ),
     );
   };
