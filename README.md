@@ -16,6 +16,11 @@
   отключается. При переходе по ссылке нужно подождать некоторое время, чтобы сервер смог запуститься, примерно 30-40
   секунд, а затем обновить страницу, если она сама не перезагрузилась)
 * [Course Project](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Course_project.pdf)
+* Аккаунты для авторизации в приложении: 
+* Shikimori (для авторизации): login: test_shiki_user | password: test_shiki_user
+* Наше приложение:
+*   Администратор: login: ad | password: ad
+*   Модератор: login: moder | password: moder
 
 # Видеоматериалы
 * [Тех видос](https://youtu.be/TlHPJKfjGCs)
