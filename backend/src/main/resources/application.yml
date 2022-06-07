@@ -4,9 +4,9 @@ spring:
   application:
     name: shiki-adapter
   datasource:
-    url: jdbc:postgresql://ec2-34-247-172-149.eu-west-1.compute.amazonaws.com:5432/ddetvfiudb0ivb
-    username: fvcjgzhsepbshy
-    password: 520959e6bd4b368e0abebfb5db928fbbc754d647a3fd2f639e2ae5c346acdf30
+    url: jdbc:postgresql://ec2-52-18-116-67.eu-west-1.compute.amazonaws.com:5432/d74jl32ihisr0n
+    username: jaxcixkjirpjgl
+    password: daeb4b3fc6db525e4ed56c06b3b8833c3e138fde06d52152a938acc8083e3f9b
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:

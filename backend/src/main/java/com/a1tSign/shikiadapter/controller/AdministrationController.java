@@ -17,8 +17,6 @@ import java.util.List;
 @RequestMapping("/api/v0/admin")
 @RequiredArgsConstructor
 public class AdministrationController {
-    //TODO: Mocked. Need to create
-
     private final AdminService adminService;
 
     @RolesAllowed ({Roles.ADMIN})
