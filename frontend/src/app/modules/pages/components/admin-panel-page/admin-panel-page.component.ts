@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { SettingsService } from "#services/settings.service";
 import { UserRole } from "#models/user/role/user-role";
+import { switchMap } from "rxjs";
+import { AccountService } from "#modules/login/services/account.service";
 
 export interface Moderator {
   id?: string,
@@ -21,13 +23,26 @@ export class AdminPanelPageComponent implements OnInit {
   public moderators: Array<Moderator> = [];
 
   constructor(
+    private accountService: AccountService,
     private settingsService: SettingsService,
     private httpClient: HttpClient,
   ) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>(
-      this.settingsService.appSettings.apiEndpoint + `/admin/all-moderators`,
+    this.fetchModerators();
+
+  }
+
+  fetchModerators() {
+    this.accountService.userInfo$.pipe(
+      switchMap((user) => {
+          const headers = new HttpHeaders({ [`Authorization`]: `Bearer ${user.jwtToken}` });
+          return this.httpClient.get<any>(
+            this.settingsService.appSettings.apiEndpoint + `/admin/all-moderators`,
+            { headers },
+          );
+        },
+      ),
     ).subscribe((moderators) => {
       this.moderators = moderators;
       console.log(moderators);
@@ -35,23 +50,38 @@ export class AdminPanelPageComponent implements OnInit {
   }
 
   create(): void {
-    this.httpClient.post<any>(
-      this.settingsService.appSettings.apiEndpoint + `/admin/create`,
-      {
-        username: this.username,
-        password: this.password,
-        role: UserRole.MODERATOR,
-      },
-    ).subscribe((response) => {
-      console.log(response);
+    this.accountService.userInfo$.pipe(
+      switchMap((user) => {
+          const headers = new HttpHeaders({ [`Authorization`]: `Bearer ${user.jwtToken}` });
+          return this.httpClient.post<any>(
+            this.settingsService.appSettings.apiEndpoint + `/admin/create`,
+            {
+              username: this.username,
+              password: this.password,
+              role: UserRole.MODERATOR,
+            },
+            { headers },
+          );
+        },
+      ),
+    ).subscribe(() => {
+      this.fetchModerators();
     });
   }
 
   remove(username: string): void {
-    this.httpClient.delete<any>(
-      this.settingsService.appSettings.apiEndpoint + `/admin/${username}/delete`,
-    ).subscribe((response) => {
-      console.log(response);
+    this.accountService.userInfo$.pipe(
+      switchMap((user) => {
+          const headers = new HttpHeaders({ [`Authorization`]: `Bearer ${user.jwtToken}` });
+          return this.httpClient.post<any>(
+            this.settingsService.appSettings.apiEndpoint + `/admin/${username}/delete`,
+            {},
+            { headers },
+          );
+        },
+      ),
+    ).subscribe(() => {
+      this.fetchModerators();
     });
   }
 
