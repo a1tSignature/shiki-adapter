@@ -5,26 +5,36 @@
     "ng": "ng",
     "start": "ng serve --ssl",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build",
     "test": "ng test",
     "lint": "ng lint frontend --fix",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "prepare": "cd .. && husky install frontend/.husky",
+    "heroku-postbuild": "ng build --prod"
+  },
+  "engines": {
+    "node": "16.11.1",
+    "npm": "8.0.0"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
+    "@angular/cli": "~13.1.3",
     "@angular/common": "~13.1.0",
     "@angular/compiler": "~13.1.0",
+    "@angular/compiler-cli": "~13.1.0",
     "@angular/core": "~13.1.0",
     "@angular/forms": "~13.1.0",
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "angular-oauth2-oidc": "^13.0.1",
+    "express": "^4.18.1",
     "moment": "^2.29.3",
     "ng-yandex-metrika": "^6.0.0",
+    "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "typescript": "~4.5.2",
     "uikit": "^3.13.4",
     "zone.js": "~0.11.4"
   },
@@ -35,12 +45,11 @@
     "@angular-eslint/eslint-plugin-template": "13.1.0",
     "@angular-eslint/schematics": "13.1.0",
     "@angular-eslint/template-parser": "13.1.0",
-    "@angular/cli": "~13.1.3",
-    "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.11.0",
     "@typescript-eslint/parser": "5.11.0",
+    "enhanced-resolve": "^3.3.0",
     "eslint": "^8.2.0",
     "husky": "^7.0.4",
     "jasmine-core": "~3.10.0",
@@ -48,7 +57,6 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.2"
+    "karma-jasmine-html-reporter": "~1.7.0"
   }
 }

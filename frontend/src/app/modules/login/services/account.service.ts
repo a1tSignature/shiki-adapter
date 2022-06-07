@@ -27,14 +27,8 @@ export class AccountService implements OnDestroy {
         userRole: UserRole.USER,
         accessToken: JSON.parse(localStorage.getItem(`__authResponse`) ?? `{}`).access_token,
       });
-    } else if (localStorage.getItem(`__userRole`) === UserRole.MODERATOR) {
-      this.userInfo.next({
-        userRole: UserRole.MODERATOR,
-      });
-    } else if (localStorage.getItem(`__userRole`) === UserRole.ADMIN) {
-      this.userInfo.next({
-        userRole: UserRole.ADMIN,
-      });
+    } else if (localStorage.getItem(`__userRole`) === UserRole.MODERATOR || localStorage.getItem(`__userRole`) === UserRole.ADMIN) {
+      this.authorizeModeratorOrAdmin(localStorage.getItem(`__jwtToken`));
     }
   }
 
@@ -49,6 +43,7 @@ export class AccountService implements OnDestroy {
     });
     localStorage.removeItem(`__userRole`);
     localStorage.removeItem(`__authResponse`);
+    localStorage.removeItem(`__jwtToken`);
   }
 
   authorizeUser(authResponse: AuthResponse): void {
@@ -58,6 +53,16 @@ export class AccountService implements OnDestroy {
     });
     localStorage.setItem(`__userRole`, UserRole.USER);
     localStorage.setItem(`__authResponse`, JSON.stringify(authResponse));
+  }
+
+  authorizeModeratorOrAdmin(jwt: string) {
+    const data = JSON.parse(atob(jwt.split(`.`)[1]));
+
+    this.userInfo.next({
+      userRole: data.role,
+    });
+    localStorage.setItem(`__userRole`, data.role);
+    localStorage.setItem(`__jwtToken`, jwt);
   }
 
   authorizeModerator(): void {
