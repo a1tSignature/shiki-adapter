@@ -1,6 +1,5 @@
-<div class="player">
-  <ng-container (click)="this.metrika.fireEvent('anime_player_clicked');"
-                *ngIf="playerSourceService.source$ | async as source; else no_source">
+<div class="player" (click)="this.metrika.fireEvent('anime_player_clicked');">
+  <ng-container *ngIf="playerSourceService.source$ | async as source; else no_source">
     <iframe
       [src]="source.link | safe"
       allowfullscreen=""

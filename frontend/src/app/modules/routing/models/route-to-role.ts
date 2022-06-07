@@ -13,10 +13,15 @@ const any = [
 ];
 
 export const RouteToRole = TypescriptUtils.inferRecord({
+  accounts: [
+    UserRole.ADMIN,
+  ],
   shkey: [...any],
   home: [...any],
   search: [...any],
-  list: [...authorized],
+  list: [
+    UserRole.USER,
+  ],
   login: [
     UserRole.GUEST,
   ],

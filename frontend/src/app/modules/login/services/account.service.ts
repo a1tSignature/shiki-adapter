@@ -27,6 +27,14 @@ export class AccountService implements OnDestroy {
         userRole: UserRole.USER,
         accessToken: JSON.parse(localStorage.getItem(`__authResponse`) ?? `{}`).access_token,
       });
+    } else if (localStorage.getItem(`__userRole`) === UserRole.MODERATOR) {
+      this.userInfo.next({
+        userRole: UserRole.MODERATOR,
+      });
+    } else if (localStorage.getItem(`__userRole`) === UserRole.ADMIN) {
+      this.userInfo.next({
+        userRole: UserRole.ADMIN,
+      });
     }
   }
 
@@ -50,5 +58,19 @@ export class AccountService implements OnDestroy {
     });
     localStorage.setItem(`__userRole`, UserRole.USER);
     localStorage.setItem(`__authResponse`, JSON.stringify(authResponse));
+  }
+
+  authorizeModerator(): void {
+    this.userInfo.next({
+      userRole: UserRole.MODERATOR,
+    });
+    localStorage.setItem(`__userRole`, UserRole.MODERATOR);
+  }
+
+  authorizeAdmin(): void {
+    this.userInfo.next({
+      userRole: UserRole.ADMIN,
+    });
+    localStorage.setItem(`__userRole`, UserRole.ADMIN);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, switchMap, tap } from "rxjs";
+import { BehaviorSubject, map, Observable, switchMap } from "rxjs";
 import { ListTag, ListType, ListTypeUpdatable } from "#models/list/list-type";
 import { Maybe } from "#types/maybe";
 import { TitleInfo, titleInfoConvertToSa, TitleInfoSA, titleInfoSaConvertToShiki } from "#models/title/title-info";
@@ -24,7 +24,6 @@ export class SelectListService {
     this.selectedList$ = this.selectedType$.pipe(
       switchMap(this.fetchList),
       map((item: any) => item.titles.map((title) => titleInfoSaConvertToShiki(title))),
-      tap((d) => console.log(d)),
     ) as any;
   }
 

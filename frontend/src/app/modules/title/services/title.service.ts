@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { TitleInfo } from "#models/title/title-info";
-import { map, Observable, tap } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
 import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
@@ -44,7 +44,6 @@ export class TitleService {
     return this.httpClient.get<any>(`${SHIKIMORI_URL}/api/calendar`).pipe(
       map((item) => [...item.map((anime) => anime.anime)]),
       formatTitleListParams(),
-      tap(console.log),
     );
   }
 

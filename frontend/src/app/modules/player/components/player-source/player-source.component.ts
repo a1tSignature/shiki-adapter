@@ -40,7 +40,7 @@ export class PlayerSourceComponent implements OnInit {
         this.sources.push(...item);
       });
       this.playerSourceService.setSrc(this.sources[0]);
-      console.log(sources);
+
     });
   }
 }

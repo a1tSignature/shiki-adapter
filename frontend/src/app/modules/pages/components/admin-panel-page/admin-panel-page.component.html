@@ -1,0 +1,17 @@
+<div *ngIf="moderators && moderators.length" class="uk-card uk-card-default uk-card-body">
+  <div
+    *ngFor="let moderator of moderators"
+  >
+    <span>{{moderator.username}}</span>
+    <button (click)="remove(moderator.username)" class="uk-button uk-button-default">Удалить</button>
+  </div>
+</div>
+
+<div class="uk-card uk-card-default uk-card-body uk-margin-top">
+  <h3>Добавить модератора</h3>
+  <div class="uk-form-blank">
+    <input [(ngModel)]="username" class="uk-input uk-margin-bottom" name="username" placeholder="Логин">
+    <input [(ngModel)]="password" class="uk-input" type="password" name="password" placeholder="Пароль">
+    <button (click)="create()" class="uk-button uk-width-1-1 uk-button-primary uk-margin-top">Создать</button>
+  </div>
+</div>
