@@ -41,9 +41,13 @@ export class TitleService {
   }
 
   updates(): Observable<Maybe<TitleInfo[]>> {
-    return this.httpClient.get<any>(`${SHIKIMORI_URL}/api/calendar`).pipe(
-      map((item) => [...item.map((anime) => anime.anime)]),
-      formatTitleListParams(),
+    return this.searchService.search({
+      order: `popularity`,
+      kind: `tv`,
+      status: `ongoing`,
+      limit: 10,
+    } as any).pipe(
+      map((results) => results.sort((a, b) => a.id - b.id)),
     );
   }
 
