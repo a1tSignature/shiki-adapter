@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { TitleInfo } from "#models/title/title-info";
-import { Observable, of } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Maybe } from "#types/maybe";
 import { SHIKIMORI_URL } from "#src/app/common/constants/constants";
 import { formatTitleListParams } from "#src/app/common/util/rxjs/operators/format-title-list-params";
@@ -41,7 +41,17 @@ export class TitleService {
   }
 
   updates(): Observable<Maybe<TitleInfo[]>> {
-    // todo return real updates
-    return of(null);
+    return this.searchService.search({
+      order: `popularity`,
+      kind: `tv`,
+      status: `ongoing`,
+      limit: 10,
+    } as any).pipe(
+      map((results) => results.sort((a, b) => a.id - b.id)),
+    );
+  }
+
+  get(id: number): Observable<Maybe<TitleInfo>> {
+    return this.httpClient.get<TitleInfo>(`${SHIKIMORI_URL}/api/animes/${id}`);
   }
 }

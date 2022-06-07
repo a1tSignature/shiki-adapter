@@ -15,6 +15,9 @@ import { RouterModule } from "@angular/router";
 import { ShkeyPageComponent } from './components/shkey-page/shkey-page.component';
 import { ListPageComponent } from './components/list-page/list-page.component';
 import { ListModule } from "#modules/list/list.module";
+import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AdminPanelPageComponent } from './components/admin-panel-page/admin-panel-page.component';
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { ListModule } from "#modules/list/list.module";
     FaqPageComponent,
     ShkeyPageComponent,
     ListPageComponent,
+    AdminLoginPageComponent,
+    AdminPanelPageComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +42,8 @@ import { ListModule } from "#modules/list/list.module";
     SearchModule,
     PlayerModule,
     ListModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class PagesModule {}

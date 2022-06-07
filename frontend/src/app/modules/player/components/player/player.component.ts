@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PlayerSourceService } from "#modules/player/services/player-source.service";
+import { Metrika } from "ng-yandex-metrika";
 
 @Component({
   selector: `app-player`,
@@ -6,8 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: [`./player.component.scss`],
 })
 export class PlayerComponent {
-  // todo @Input title info, source (with specific type like PlayerSource, including url, is iframe)
 
-  constructor() { }
+  constructor(public playerSourceService: PlayerSourceService, public metrika: Metrika) {}
 
 }

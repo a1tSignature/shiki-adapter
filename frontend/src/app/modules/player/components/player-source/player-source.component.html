@@ -1,1 +1,34 @@
-<p>player-source works!</p>
+<div
+  class="uk-flex uk-flex-column uk-height-1-1">
+  <h3>{{title?.name}}</h3>
+  <div class="player-source-list uk-height-1-1 uk-overflow-auto">
+    <div *ngIf="(accountService.userInfo$ | async)?.userRole === UserRole.MODERATOR">
+      <div class="uk-flex">
+        <input [(ngModel)]="addValNum" class="uk-input" type="number" placeholder="Номер">
+        <input [(ngModel)]="addValLink" class="uk-input  uk-margin-left" placeholder="Ссылка">
+      </div>
+      <div class="uk-flex">
+        <input [(ngModel)]="addValSource" class="uk-input uk-margin-top" placeholder="Источник">
+      </div>
+      <div class="uk-flex">
+        <button (click)="addSource()" class="uk-button uk-button-secondary uk-margin-top uk-width-1-1">+</button>
+      </div>
+      <hr />
+    </div>
+    <ng-container *ngFor="let source of sources">
+      <div class="uk-flex">
+        <button
+          class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
+          [class.uk-button-primary]="source === (playerSourceService.source$ | async)"
+          (click)="playerSourceService.setSrc(source)">
+          {{source.number}} - {{source.source}}
+        </button>
+        <div
+          *ngIf="(accountService.userInfo$ | async)?.userRole === UserRole.MODERATOR"
+        >
+          <button (click)="removeSource(source)" class="uk-button uk-button-danger uk-margin-left">X</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

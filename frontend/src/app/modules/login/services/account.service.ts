@@ -3,6 +3,13 @@ import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 import { DefaultUserInfo, UserInfo } from "#models/user/user-info";
 import { UserRole } from "#models/user/role/user-role";
 
+export interface AuthResponse {
+  access_token: string,
+  expires_in: 86400,
+  refresh_token: string,
+  scope: string,
+}
+
 @Injectable({
   providedIn: `root`,
 })
@@ -15,8 +22,13 @@ export class AccountService implements OnDestroy {
     this.userInfo$ = this.userInfo.asObservable().pipe(
       takeUntil(this.destroy$),
     );
-    if (localStorage.getItem(`__mockAuthorized`) === UserRole.USER) {
-      this.mockAuthorizeUser();
+    if (localStorage.getItem(`__userRole`) === UserRole.USER && localStorage.getItem(`__authResponse`)) {
+      this.userInfo.next({
+        userRole: UserRole.USER,
+        accessToken: JSON.parse(localStorage.getItem(`__authResponse`) ?? `{}`).access_token,
+      });
+    } else if (localStorage.getItem(`__userRole`) === UserRole.MODERATOR || localStorage.getItem(`__userRole`) === UserRole.ADMIN) {
+      this.authorizeModeratorOrAdmin(localStorage.getItem(`__jwtToken`));
     }
   }
 
@@ -29,13 +41,42 @@ export class AccountService implements OnDestroy {
     this.userInfo.next({
       userRole: UserRole.GUEST,
     });
-    localStorage.removeItem(`__mockAuthorized`);
+    localStorage.removeItem(`__userRole`);
+    localStorage.removeItem(`__authResponse`);
+    localStorage.removeItem(`__jwtToken`);
   }
 
-  mockAuthorizeUser(): void {
+  authorizeUser(authResponse: AuthResponse): void {
     this.userInfo.next({
       userRole: UserRole.USER,
+      accessToken: authResponse.access_token,
     });
-    localStorage.setItem(`__mockAuthorized`, UserRole.USER);
+    localStorage.setItem(`__userRole`, UserRole.USER);
+    localStorage.setItem(`__authResponse`, JSON.stringify(authResponse));
+  }
+
+  authorizeModeratorOrAdmin(jwt: string) {
+    const data = JSON.parse(atob(jwt.split(`.`)[1]));
+
+    this.userInfo.next({
+      userRole: data.role,
+      jwtToken: jwt,
+    });
+    localStorage.setItem(`__userRole`, data.role);
+    localStorage.setItem(`__jwtToken`, jwt);
+  }
+
+  authorizeModerator(): void {
+    this.userInfo.next({
+      userRole: UserRole.MODERATOR,
+    });
+    localStorage.setItem(`__userRole`, UserRole.MODERATOR);
+  }
+
+  authorizeAdmin(): void {
+    this.userInfo.next({
+      userRole: UserRole.ADMIN,
+    });
+    localStorage.setItem(`__userRole`, UserRole.ADMIN);
   }
 }

@@ -1,0 +1,13 @@
+<div class="login-page">
+  <div class="uk-width-2-3 uk-card uk-card-body uk-card-default">
+    <h3>Войти</h3>
+    <div class="uk-form-blank">
+      <input [(ngModel)]="username" class="uk-input uk-margin-bottom" name="username" placeholder="Логин">
+      <input [(ngModel)]="password" class="uk-input" type="password" name="password" placeholder="Пароль">
+      <button (click)="login()" class="uk-button uk-width-1-1 uk-button-primary uk-margin-top">Вход</button>
+    </div>
+  </div>
+</div>
+<div class="uk-margin-top uk-flex uk-flex-center">
+  <span *ngIf="message">{{message}}</span>
+</div>
