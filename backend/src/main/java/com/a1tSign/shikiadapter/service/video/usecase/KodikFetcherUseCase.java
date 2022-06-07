@@ -41,7 +41,7 @@ public class KodikFetcherUseCase {
                 .collect(Collectors.groupingBy(VideoLinkTo::getNumber));
         d.values().forEach(s -> {
             AtomicInteger count = new AtomicInteger(0);
-            s.forEach(p -> p.setSource(voices.get(getAndIncrement(count, voices).get())));
+            s.forEach(p -> p.setSource(voices.get(getAndIncrement(count, voices))));
         });
 
         return d;
@@ -53,10 +53,10 @@ public class KodikFetcherUseCase {
                 false);
     }
 
-    private AtomicInteger getAndIncrement(AtomicInteger number, List<String> voices) {
-        if(number.get() + 1 == voices.size()) {
+    private int getAndIncrement(AtomicInteger number, List<String> voices) {
+        if(number.get() == voices.size()) {
             number = new AtomicInteger(0);
         }
-        return number;
+        return number.getAndIncrement();
     }
 }
