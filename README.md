@@ -24,8 +24,9 @@
 
 # Аккаунты для авторизации
  
-* Shikimori (для авторизации через правую верхнюю кнопку): login: test_shiki_user | password: test_shiki_user
-* Наше приложение ("Я модератор" внизу главной страницы):
+* Shikimori **(для авторизации через правую верхнюю кнопку)**: 
+*   login: test_shiki_user | password: test_shiki_user
+* Наше приложение **("Я модератор" внизу главной страницы)**:
 *   Администратор: login: ad | password: ad
 *   Модератор: login: moder | password: moder
 
