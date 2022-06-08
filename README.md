@@ -21,9 +21,11 @@
   секунд, а затем обновить страницу, если она сама не перезагрузилась)
 * [Course Project](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Course_project.pdf)
 * [Presentation](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Prezentation.pdf)
-* Аккаунты для авторизации в приложении: 
-* Shikimori (для авторизации): login: test_shiki_user | password: test_shiki_user
-* Наше приложение:
+
+# Аккаунты для авторизации
+ 
+* Shikimori (для авторизации через правую верхнюю кнопку): login: test_shiki_user | password: test_shiki_user
+* Наше приложение ("Я модератор" внизу главной страницы):
 *   Администратор: login: ad | password: ad
 *   Модератор: login: moder | password: moder
 
