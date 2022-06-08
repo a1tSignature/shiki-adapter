@@ -7,7 +7,7 @@
 
 # Приложение
 * [Фронт](https://shiki-adapter.herokuapp.com/home)
-* (API)(https://shiki-adapter-v1.herokuapp.com/api/v0/)
+* [API](https://shiki-adapter-v1.herokuapp.com/api/v0/)
 
 # Сервисы для работы
 * [Jira](https://shiki-adapter.atlassian.net/jira/software/projects/SHI/boards/1)
