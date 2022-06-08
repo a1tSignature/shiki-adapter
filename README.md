@@ -10,7 +10,7 @@
 * [Miro](https://miro.com/app/board/uXjVOHBHeU8=/)
 
 # Документация
-* [Technichal Task](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Technical_task.pdf)
+* [Technichal Task](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Technical_task.pdf) ([docx](https://github.com/a1tSignature/shiki-adapter/blob/main/documentation/Shiki-Adapter%20Technical_task.docx))
 * [Api Documentation (Swagger)](https://shiki-adapter-v1.herokuapp.com/swagger-ui/index.html) (Бекенд размещен на
   heroku.com, выбран бесплатный тариф, поэтому есть некоторые ограничения, а именно: после поулчаса бездействия сервер
   отключается. При переходе по ссылке нужно подождать некоторое время, чтобы сервер смог запуститься, примерно 30-40
