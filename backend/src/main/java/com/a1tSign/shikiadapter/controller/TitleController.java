@@ -2,10 +2,10 @@ package com.a1tSign.shikiadapter.controller;
 
 import com.a1tSign.shikiadapter.contracts.dto.to.TitleTo;
 import com.a1tSign.shikiadapter.contracts.dto.to.VideoLinkTo;
-import com.a1tSign.shikiadapter.contracts.enums.Role;
 import com.a1tSign.shikiadapter.contracts.exception.ShikiAdapterException;
 import com.a1tSign.shikiadapter.service.security.Roles;
 import com.a1tSign.shikiadapter.service.title.TitleService;
+import com.a1tSign.shikiadapter.service.video.usecase.HentaiFoxFetcherUseCase;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class TitleController {
     @PostMapping("")
     @ApiResponse (responseCode = "404", description = "Title not found",
             content = @Content)
-    public ResponseEntity<Map<String, List<VideoLinkTo>>> findTitleByShikimoriId(@RequestBody TitleTo titleTo) {
+    public ResponseEntity<Map<String, List<VideoLinkTo>>> findTitleByShikimoriId(@RequestBody TitleTo titleTo) throws IOException {
         var title = titleService.findByShikimoriId(titleTo);
 
         if (title == null) {
